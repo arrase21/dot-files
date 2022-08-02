@@ -25,6 +25,11 @@ super + alt {r,e}
 # Rofi menu launcher(s)
 super + {x,a}
   {key-power,rofi-net,$(sh ~/Scripts/Modules/runmenu.sh)}
+
+# Rofi app launcher
+alt + F1
+  key-menu
+
 #
 super + {_,shift +} d
 		{rofi -modi drun -show drun -width 22,pass rofi_root}
