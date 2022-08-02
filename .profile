@@ -13,8 +13,6 @@ export XCURSOR_SIZE=32
 # Disable telemetry for dotnet apps
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# replace neovim colorscheme
-sed -i "s/theme =.*$/theme = \"tokyonight\",/g" "$HOME"/.config/nvim/lua/custom/chadrc.lua
 
 # set PATH so it includes user's private ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
