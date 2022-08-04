@@ -5,7 +5,7 @@
 #
 
 # workspace 1 (Terminals)
-declare -a terminal=(discord)
+declare -a terminal=(tilix)
 for i in "${terminal[@]}"; do
 	bspc rule -a "$i" desktop='^1' follow=on focus=on
 done
@@ -17,20 +17,19 @@ for i in "${web[@]}"; do
 done
 
 # workspace 3 (Files)
-declare -a filem=(Pcmanfm qBittorrent)
+declare -a filem=(pcmanfm qBittorrent)
 for i in "${filem[@]}"; do
 	bspc rule -a "$i" desktop='^3' follow=on focus=on
 done
 
 # workspace 4 (Text Editor)
-declare -a work=(Blender)
+declare -a work=(discord)
 for i in "${work[@]}"; do
 	bspc rule -a "$i" desktop='^4' follow=on focus=on
 done
 
 # workspace 5 (Media)
-declare -a media=(vlc obs instagram-live-streamer mplayer lxmusic Gimp
-	Gimp-2.10 "VirtualBox Manager")
+declare -a media=(vlc obs mplayer lxmusic "VirtualBox Manager")
 for i in "${media[@]}"; do
 	bspc rule -a "$i" desktop='^5' follow=on focus=on
 done
@@ -52,7 +51,7 @@ declare -a floats=(Alafloat Lxappearance Arandr
 	Pavucontrol jamesdsp Nvidia-settings Nitrogen
 	Peazip Xfce4-appearance-settings Xfce4-mouse-settings
 	parsecd Galculator com.github.joseexposito.touche
-	XVkbd usbguard-applet-qt instagram-live-streamer
+	XVkbd usbguard-applet-qt telegram-desktop 
   Mumble qimgv Peek)
 for i in "${floats[@]}"; do
 	bspc rule -a "$i" manage=on state=floating follow=on focus=on center=true
@@ -76,7 +75,7 @@ for i in "${tiled[@]}"; do
 done
 
 # Force full screen windows
-declare -a fullscreen=(mpv)
+declare -a fullscreen=(vlc)
 for i in "${fullscreen[@]}"; do
 	bspc rule -a "$i" manage=on state=fullscreen
 done
