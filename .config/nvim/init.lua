@@ -25,3 +25,4 @@ require "user.notify"
 -- require "user.bfs"
 
 vim.cmd('runtime ./lua/user/floatterm.vim')
+vim.cmd('runtime ./lua/user/tagalone.vim')

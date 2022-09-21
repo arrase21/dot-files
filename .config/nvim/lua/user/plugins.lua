@@ -2,6 +2,7 @@ local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+---@diagnostic disable-next-line: missing-parameter
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     "git",
@@ -31,13 +32,16 @@ end
 
 -- Have packer use a popup window
 packer.init {
+  -- snapshot = "july-24",
+  snapshot_path = fn.stdpath "config" .. "/snapshots",
+  max_jobs = 50,
   display = {
     open_fn = function()
       return require("packer.util").float { border = "rounded" }
     end,
+    prompt_border = "rounded", -- Border style of prompt popups.
   },
 }
-
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins here
@@ -48,25 +52,24 @@ return packer.startup(function(use)
   use "numToStr/Comment.nvim" -- Easily comment stuff
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
-  use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
-  use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "romgrk/barbar.nvim"
   use "folke/which-key.nvim"
-  use "norcalli/nvim-colorizer.lua"
+  use "brenoprata10/nvim-highlight-colors"
 
+  -- Aurorename tag
+  use "AndrewRadev/tagalong.vim"
+  use "windwp/nvim-ts-autotag"
   -- Colorschemes
   use "tanvirtin/monokai.nvim"
   use "svrana/neosolarized.nvim"
   -- use "matsuuu/pinkmare"
-  -- use "sainnhe/sonokai"
   use "arrase21/molokai"
   use "tjdevries/colorbuddy.nvim"
-  use "lunarvim/synthwave84.nvim"
 
     -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin

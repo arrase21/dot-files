@@ -1,6 +1,17 @@
 return {
-    cmd = { "typescript-language-server", "--stdio" },
     settings = {
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+        filetype = { "typescript", "typescriptreact", "typescript.tsx",
+            typescript = {
+                inlayHints = {
+                    includeInlayEnumMemberValueHints = true,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayFunctionParameterTypeHints = true,
+                    includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                    includeInlayPropertyDeclarationTypeHints = true,
+                    includeInlayVariableTypeHints = true,
+                },
+            },
+        },
     }
 }

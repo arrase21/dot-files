@@ -70,21 +70,33 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
+local status, nvim_lsp = pcall(require, "lspconfig")
+if (not status) then return end
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+
+nvim_lsp.flow.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" },
+  capabilities = capabilities
+}
+nvim_lsp.html.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "htmldjango", "python" },
+  cmd = { "html-lsp", "--stdio" },
+  capabilities = capabilities
+}
+
 
 M.on_attach = function(client, bufnr)
 
-  -- if client.name == "jdt.ls" then
-  --   if JAVA_DAP_ACTIVE then
-  --     require("jdtls").setup_dap { hotcodereplace = "auto" }
-  --     require("jdtls.dap").setup_dap_main_class_configs()
-  --   end
-  --   M.capabilities.textDocument.completion.completionItem.gosht_text.snippetSupport = true
-  --   vim.lsp.codelens.refresh()
-  -- else
-  --   local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  --   if not status_cmp_ok then
-  --     return
-  --   end
   -- end
   if client.name == "jdt.ls" then
     -- TODO: instantiate capabilities in java file later
