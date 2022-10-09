@@ -10,11 +10,11 @@ local servers = {
   "html",
   "bashls",
   "pyright",
-  "denols",
-  --[[ "tsserver", ]]
+  --[[ "pylsp", ]]
   "jsonls",
-  "tailwindcss"
-  --[[ "jdtls", ]]
+  --[[ "tailwindcss", ]]
+  "tsserver",
+  "volar"
 }
 local settings = {
   ui = {
@@ -62,7 +62,7 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
   end
 
-  if server == "pyright" then
+  if server == "pyright" or server == "pylsp" then
     local pyright_opts = require "user.lsp.settings.pyright"
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
@@ -70,6 +70,10 @@ for _, server in pairs(servers) do
   if server == "pylsp" then
     local pylsp_opts = require "user.lsp.settings.pylsp"
     opts = vim.tbl_deep_extend("force", pylsp_opts, opts)
+  end
+  if server == "volar" then
+    local volar_opts = require "user.lsp.settings.vue"
+    opts = vim.tbl_deep_extend("force", volar_opts, opts)
   end
 
   lspconfig[server].setup(opts)

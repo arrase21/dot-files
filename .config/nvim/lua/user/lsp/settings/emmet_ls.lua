@@ -21,6 +21,7 @@ return {
     "sss",
     "hbs",
     "handlebars",
-    "python"
+    "python",
+    "py"
   },
 }
