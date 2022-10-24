@@ -9,9 +9,8 @@
     // "margin-right":25,
     "margin-bottom":-11,
     //"margin-top":3,
-    "modules-left": ["wlr/workspaces"],
-    "modules-right": ["custom/expand","custom/ss","custom/cycle_wall","tray","temperature","pulseaudio","backlight","battery","network","clock"],
-    "modules-center": ["custom/dynamic_pill"],
+    "modules-left": ["wlr/taskbar"],
+    "modules-right": ["tray","pulseaudio","backlight","battery","network","clock"],
     // Modules configuration
 
     // custom modules ////////////////
@@ -61,14 +60,24 @@
             "unlocked": ""
         }
     },
-    "wlr/workspaces": {
-        "format": "{icon}",
-        "format-active": " {icon} ",
-        "on-click": "activate"
+    //"wlr/workspaces": {
+        //"format": "{icon}",
+      //  "format-active": " {icon} ",
+       // "on-click": "activate"
         // "format-icons":{
         //     "10":"10"
         // }
+    //},
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 35,
+        "icon-theme": "WhiteSur",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click": "move",
+        "on-click-middle": "close"
     },
+
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },

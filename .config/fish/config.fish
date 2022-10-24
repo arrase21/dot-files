@@ -54,5 +54,4 @@ if test -f $LOCAL_CONFIG
   source $LOCAL_CONFIG
 end
 
-#eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
