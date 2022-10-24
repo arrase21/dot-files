@@ -29,7 +29,7 @@ try
 endtry
 ]]
 
-local status, n = pcall(require, "molokai")
+local status, n = pcall(require, "yiyi")
 if (not status) then return end
 
 n.setup({

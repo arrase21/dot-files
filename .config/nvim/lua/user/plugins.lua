@@ -65,10 +65,11 @@ return packer.startup(function(use)
   -- Aurorename tag
   use "AndrewRadev/tagalong.vim"
   -- Colorschemes
-  --[[ use "tanvirtin/monokai.nvim" ]]
+  use "tanvirtin/monokai.nvim"
   --[[ use "svrana/neosolarized.nvim" ]]
   -- use "matsuuu/pinkmare"
   use "arrase21/molokai"
+  use "arrase21/yiyi.nvim"
   use "tjdevries/colorbuddy.nvim"
 
     -- cmp plugins
