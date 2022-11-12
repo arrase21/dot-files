@@ -14,6 +14,7 @@ alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "ls -l"
 alias lla "ll -A"
+alias t "tmux"
 alias g git
 command -qv nvim && alias vim nvim
 
@@ -54,4 +55,4 @@ if test -f $LOCAL_CONFIG
   source $LOCAL_CONFIG
 end
 
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)

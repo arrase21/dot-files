@@ -66,8 +66,9 @@ return packer.startup(function(use)
   use "AndrewRadev/tagalong.vim"
   -- Colorschemes
   use "tanvirtin/monokai.nvim"
-  --[[ use "svrana/neosolarized.nvim" ]]
+  use "svrana/neosolarized.nvim"
   -- use "matsuuu/pinkmare"
+  use "lunarvim/synthwave84.nvim"
   use "arrase21/molokai"
   use "arrase21/yiyi.nvim"
   use "tjdevries/colorbuddy.nvim"

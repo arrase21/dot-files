@@ -20,8 +20,8 @@ local options = {
   updatetime = 300,
   writebackup = false,
   expandtab = true,
-  shiftwidth = 4,
-  tabstop = 4,
+  shiftwidth = 2,
+  tabstop = 2,
   cursorline = true,
   number = true,
   relativenumber = true,
@@ -30,7 +30,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   ruler = false,
-  guifont = "ComicCodeLigaturesRegula",
+  guifont = "Iosevka Regular",
 }
 vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"

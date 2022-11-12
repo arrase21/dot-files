@@ -189,6 +189,11 @@ _G.packer_plugins = {
     path = "/home/arrase/.local/share/nvim/site/pack/packer/start/monokai.nvim",
     url = "https://github.com/tanvirtin/monokai.nvim"
   },
+  ["neosolarized.nvim"] = {
+    loaded = true,
+    path = "/home/arrase/.local/share/nvim/site/pack/packer/start/neosolarized.nvim",
+    url = "https://github.com/svrana/neosolarized.nvim"
+  },
   ["nlsp-settings.nvim"] = {
     loaded = true,
     path = "/home/arrase/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
@@ -293,6 +298,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/arrase/.local/share/nvim/site/pack/packer/start/rest.nvim",
     url = "https://github.com/NTBBloodbath/rest.nvim"
+  },
+  ["synthwave84.nvim"] = {
+    loaded = true,
+    path = "/home/arrase/.local/share/nvim/site/pack/packer/start/synthwave84.nvim",
+    url = "https://github.com/lunarvim/synthwave84.nvim"
   },
   ["tagalong.vim"] = {
     loaded = true,

@@ -26,6 +26,7 @@ require "user.lab"
 require "user.surroud"
 require "user.inlay-hits"
 require "user.fidget"
-
+require "user.neovide"
 vim.cmd('runtime ./lua/user/floatterm.vim')
 vim.cmd('runtime ./lua/user/tagalone.vim')
+-- vim.cmd('runtime ./lua/user/colors.vim')

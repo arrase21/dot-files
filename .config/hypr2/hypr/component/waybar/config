@@ -1,0 +1,95 @@
+{
+    "position": "top", 
+    "height": 30,
+    "modules-center": ["wlr/workspaces", "tray","backlight","network", "pulseaudio", "battery", "custom/date", "clock"],
+    // Modules configuration
+      "wlr/workspaces": {
+        "format": "{icon}",
+        "format-active": " {icon} ",
+        "all-outputs": true,
+        "on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "〇"
+       }
+   },
+
+	"custom/date": {
+    		"format": "󰸗 {}",
+		"interval": 3600,
+		"exec": "/home/loki/bin/waybar-date.sh"
+	},
+  "clock": {
+      // "timezone": "America/New_York",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "interval": 60,
+      "format-alt": "{:%Y-%m-%d}",
+      "format": "{:%I:%M}",
+      "max-length": 25
+    },
+
+	"battery": {
+        	"states": {
+            		"warning": 30,
+            		"critical": 15,
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-charging": "󰂄 {capacity}%",
+        	"format-plugged": "󰂄{capacity}%",
+        	"format-alt": "{icon} {time}",
+        	"format-full": "󱈑 {capacity}%",
+        	"format-icons": ["󱊡", "󱊢", "󱊣"]
+	},
+	"network": {
+        	"format-wifi": "  {essid}",
+        	"format-ethernet": "󰤮 Disconnected",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": "󰤮 Disconnected",
+		"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+	},
+  "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "<span foreground='#929292'></span>",
+        "format-icons": {
+            "default": ["<span foreground='#929292'></span>"],
+            "headphone": ["<span foreground='#929292'></span>"]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pamixer -ui 1 && pamixer --get-volume > $SWAYSOCK.wob",
+        "on-scroll-down": "pamixer -ud 1 && pamixer --get-volume > $SWAYSOCK.wob",
+        "tooltip": false
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "", ""]
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+     
+        //"click-left":"stalonetray"
+        //"exec": "stalonetary",
+    },
+
+	}

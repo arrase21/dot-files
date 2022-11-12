@@ -4,7 +4,7 @@ if not status_ok then
     return
 end
 configs.setup {
-    ensure_installed = {"http","php", "python", "css", "todotxt", "javascript", "lua", "java"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = {"javascript" ,"http","php", "python", "css", "todotxt", "lua", "java"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ignore_install = {""},
     matchup = {
       enable = false, -- mandatory, false will disable the whole extension
