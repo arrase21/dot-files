@@ -1,13 +1,5 @@
 #!/bin/bash
 
-workspaces() {
-  name=1
-  for monitor in $(bspc query -M); do
-    bspc monitor "${monitor}" -n "$name" -d '' '' '' '' '' '' '' '' '' ''
-    ((name++))
-  done
-}
-workspaces
 
 bspc config border_width 3
 bspc config window_gap 10

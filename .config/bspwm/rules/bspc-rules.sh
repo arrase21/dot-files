@@ -4,44 +4,6 @@
 # Workspace specific conditions
 #
 
-# workspace 1 (Terminals)
-declare -a terminal=(tilix)
-for i in "${terminal[@]}"; do
-	bspc rule -a "$i" desktop='^1' follow=on focus=on
-done
-
-# workspace 2 (Internet Browser)
-declare -a web=(opera)
-for i in "${web[@]}"; do
-	bspc rule -a "$i" desktop='^2' follow=on focus=on
-done
-
-# workspace 3 (Files)
-declare -a filem=(pcmanfm qBittorrent)
-for i in "${filem[@]}"; do
-	bspc rule -a "$i" desktop='^3' follow=on focus=on
-done
-
-# workspace 4 (Text Editor)
-declare -a work=(discord)
-for i in "${work[@]}"; do
-	bspc rule -a "$i" desktop='^4' follow=on focus=on
-done
-
-# workspace 5 (Media)
-declare -a media=(vlc obs mplayer lxmusic "VirtualBox Manager")
-for i in "${media[@]}"; do
-	bspc rule -a "$i" desktop='^5' follow=on focus=on
-done
-
-# workspace 7 (Settings)
-declare -a settings=(Lxappearance Lxtask Lxrandr Arandr
-	Xfce4-settings-manager Xfce4-power-manager-settings
-	octopi)
-for i in "${settings[@]}"; do
-	bspc rule -a "$i" desktop='^7' follow=on focus=on
-done
-
 # floating windows
 declare -a floats=(Alafloat Lxappearance Arandr
 	Viewnior feh Nm-connection-editor Matplotlib
@@ -52,7 +14,7 @@ declare -a floats=(Alafloat Lxappearance Arandr
 	Peazip Xfce4-appearance-settings Xfce4-mouse-settings
 	parsecd Galculator com.github.joseexposito.touche
 	XVkbd usbguard-applet-qt telegram-desktop 
-  Mumble qimgv Peek)
+  Mumble qimgv Peek Tk)
 for i in "${floats[@]}"; do
 	bspc rule -a "$i" manage=on state=floating follow=on focus=on center=true
 done

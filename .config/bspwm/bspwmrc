@@ -9,14 +9,14 @@ picom --experimental-backends &
 nitrogen --restore &
 startup &
 pgrep -x sxhkd > /dev/null
-temas &
+# temas &
 wmname LG3D & # fix for some Java apps
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &          
 eval $(gnome-keyring-daemon -s -- components=pkcs11,secrets,ssh,gpg) 
 xsetroot -cursor_name left_ptr &
 
 # Launching polybar
-bash "$HOME/.config/polybar/launch.sh" &
+# bash "$HOME/.config/polybar/launch.sh" &
 
 # fix pointer
 xsetroot -cursor_name left_ptr &
@@ -58,8 +58,8 @@ copyq --start-server &
 playerctld daemon &
 
 # Start compositor
-while pgrep -u "$UID" -x picom >/dev/null; do sleep 1; done
-picom &
+# while pgrep -u "$UID" -x picom >/dev/null; do sleep 1; done
+# picom &
 
 # Delete existing hooks and restart them
 for i in "$HOME"/.config/bspwm/hooks/*.sh; do
@@ -75,16 +75,33 @@ dunstify -i window_list "Successfully restarted BSPWM"
 
 
 # bspc monitor -d I II III IV V VI VII VIII IX X
-# if xrandr -q | grep 'HDMI1 connected'; then
-#     xrandr  --output LVDS1 --mode 1366x768 --output HDMI1 --mode 1366x768 --right-of LVDS1  
-#     bspc monitor LVDS1 -d 一 二 三 四 
-#     bspc monitor HDMI1 -d 五 六 七 八 九 十
-# else
-#    # bspc monitor LVDS-1  -d I II III IV V VI VII VIII IX X
-#     bspc monitor eDP1  -d    二 三 四 五 六 七 八 九 十
-#    
+if xrandr -q | grep 'HDMI1 connected'; then
+    xrandr  --output eDP1 --mode 1366x768 --output HDMI1 --mode 1366x768 --right-of eDP1
+    bspc monitor eDP1 -d 一 二 三 四 五
+    bspc monitor HDMI1 -d 五 六 七 八
+else
+   # bspc monitor LVDS-1  -d I II III IV V VI VII VIII IX X
+    bspc monitor eDP1  -d    二 三 四 五 六
+   
+fi
+
+
+# if [[ $(xrandr -q | grep 'HDMI1 connected') ]]; then
+#       xrandr  --output eDP1 --primary --mode 1366x768 --rotate normal --output HDMI1 --mode 1366x768 --rotate normal --right-of eDP1
 # fi
+
+# bspc monitor eDP1 -d  1 2 3 4 5
+# bspc monitor HDMI1 -d 6 7 8 9 10
+
+
 xrandr --output eDP1 --mode 1366x768
+
+# if [[ $MONITOR_SUPPORT == 1 ]]; then
+#   bash $HOME/.config/bspwm/rules/monitor.sh
+# else
+#   bspc monitor primary -d 1 2 3 4 5 6 7
+# fi
+
 bspc config border_width         2
 bspc config window_gap          10
 
@@ -117,4 +134,4 @@ bspc config focused_border_color "#03B4CB"
 bspc config presel_feedback_color "#FF492B"
 
 
-# $HOME/.config/polybar/launch.sh
+$HOME/.config/polybar/launch.sh

@@ -8,6 +8,8 @@
 # /_/            /____/
 #
 
+
+
 # Files and Directories
 DIR="$HOME/.config/polybar"
 SFILE="$DIR/system"
@@ -55,7 +57,7 @@ launch_bar() {
 	fi
 }
 
-# Execute functions
+Execute functions
 if [[ ! -f "$RFILE" ]]; then
 	get_values
 	set_values
@@ -63,3 +65,17 @@ if [[ ! -f "$RFILE" ]]; then
 fi
 
 launch_bar
+
+# Terminate already running bar instances
+killall -q polybar
+
+# Wait until the processes have been shut down
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+# polybar master &
+polybar eDP1 &
+
+if [[ $(xrandr -q | grep 'HDMI1 connected') ]]; then
+  polybar HDMI1 &
+fi
+

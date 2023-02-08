@@ -7,6 +7,7 @@ for i in "${loop[@]}"; do
 done
 
 if [[ ! $(pidof stalonetray) ]]; then
+  pkill eww &
   stalonetray &
   xdo hide -n stalonetray
   polybar-msg action "#systray.hook.1"
