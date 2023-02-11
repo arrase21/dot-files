@@ -264,3 +264,6 @@ format = "<span font_desc='JetBrainsMono Medium Nerd Font'>%b</span>"
 #    urgency = normal
 #
 # vim: ft=cfg
+[play-sound]
+  summary = "*"
+  script = "~/.local/bin/alert"

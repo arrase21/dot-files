@@ -6,7 +6,7 @@
 # Override QT apps theme
 export QT_STYLE_OVERRIDE=kvantum
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export QT_FONT_DPI=116 Roboto
+export QT_FONT_DPI=116 Comic Code Ligatures
 
 export XCURSOR_SIZE=32
 
@@ -48,5 +48,5 @@ export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export MYPY_CACHE_DIR="$XDG_CACHE_HOME"/mypy
 
 # Set default mime types
-export TERMINAL="tilix"
+export TERMINAL="kitty"
 export BROWSER="opera"
