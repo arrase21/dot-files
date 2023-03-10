@@ -9,47 +9,29 @@ M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
-M.setup = function()
-	local signs = {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  update_in_insert = false,
+  virtual_text = { spacing = 4, prefix = "●" },
+  severity_sort = true,
+})
 
-		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
-	}
-
-	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-	end
-
-	local config = {
-		virtual_text = true, -- disable virtual text
-		signs = {
-			active = signs, -- show signs
-		},
-		update_in_insert = true,
-		underline = true,
-		severity_sort = true,
-		float = {
-			focusable = true,
-			style = "minimal",
-			border = "rounded",
-			source = "always",
-			header = "",
-			prefix = "",
-		},
-	}
-
-	vim.diagnostic.config(config)
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
+-- Diagnostic symbols in the sign column (gutter)
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "●",
+  },
+  update_in_insert = true,
+  float = {
+    source = "always", -- Or "if_many"
+  },
+})
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
@@ -78,16 +60,8 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
-nvim_lsp.tsserver.setup({
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-	cmd = { "typescript-language-server", "--stdio" },
-	capabilities = capabilities,
-})
 
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
-		require("lsp-inlayhints").on_attach(client, bufnr)
-	end
 	-- end
 	if client.name == "jdt.ls" then
 		-- TODO: instantiate capabilities in java file later

@@ -14,7 +14,7 @@ declare -a floats=(Alafloat Lxappearance Arandr
 	Peazip Xfce4-appearance-settings Xfce4-mouse-settings
 	parsecd Galculator com.github.joseexposito.touche
 	XVkbd usbguard-applet-qt telegram-desktop 
-  Mumble qimgv Peek Tk)
+  Mumble qimgv Peek Tk pyqt6)
 for i in "${floats[@]}"; do
 	bspc rule -a "$i" manage=on state=floating follow=on focus=on center=true
 done

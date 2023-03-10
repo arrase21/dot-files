@@ -108,4 +108,3 @@ vim.cmd([[
  highlight TelescopeSelection guifg=#FF38A2 gui=bold
  highlight TelescopeMatching guifg=#d9bcef
 ]])
-

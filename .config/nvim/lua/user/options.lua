@@ -44,3 +44,4 @@ end
 vim.cmd [[filetype plugin indent on]]
 vim.cmd "set ai"
 vim.cmd "set si"
+vim.cmd "set clipboard+=unnamedplus"
