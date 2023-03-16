@@ -137,6 +137,18 @@ cp -r ~/repos/dot-files/.bin/ ~/
 cp -r ~/repos/dot-files/.profile ~/
 cp -r ~/repos/dot-files/.Xresources ~/
 cp -r ~/repos/dot-files/Scripts/* ~/
+cp -r ~/repos/dot-files/.bscripts/ ~/
+cp -r -f -T ~/repos/dot-files/Walcache ~/.cache/wal
+cp -r ~/repos/dot-files/rice_assets/ ~/.config
+
+
+
+echo -n "Changing script permissions... "
+chmod +x ~/.bscripts/*
+chmod +x ~/.config/bspwm/quit.sh
+chmod +x ~/.config/wpg/wp_init.sh
+chmod +x ~/.cache/wal/colors-tty.sh
+echo "done"
 
 if [ -d "$HOME/.local/bin" ]; then
 	cp -r ~/repos/dot-files/.local/bin/* ~/.local/bin
@@ -173,6 +185,10 @@ systemctl --user start mpd.service
 printf "\n\nDone\n\n"
 sleep 2
 clear
+
+echo "Running wpg-install.sh -g for the gtk colorscheme"
+chmod +x "$script_dir"/wpg-install.sh 
+"$script_dir"/wpg-install.sh -g 
 
 logo "Installation finished"
 printf "%sNow logout your session, select bspwm and log in.%s \n\n" "${CRE}" "${CNC}"
