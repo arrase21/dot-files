@@ -73,9 +73,9 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # polybar master &
-polybar eDP1 &
+polybar eDP-1 &
 
 if [[ $(xrandr -q | grep 'HDMI1 connected') ]]; then
-  polybar HDMI1 &
+  polybar HDMI-1 &
 fi
 

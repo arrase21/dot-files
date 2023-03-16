@@ -41,3 +41,9 @@ declare -a fullscreen=(vlc)
 for i in "${fullscreen[@]}"; do
 	bspc rule -a "$i" manage=on state=fullscreen
 done
+
+bspc rule --add opera               rectangle=1130x768+395+140
+bspc rule --add Polkit-gnome-authentication-agent-1 rectangle=810x280+555+399
+bspc rule --add Rofi						manage=off
+bspc rule --add Pavucontrol					state=floating rectangle=610x610+650+235
+bspc rule --add Thunar						rectangle=650x500+635+290

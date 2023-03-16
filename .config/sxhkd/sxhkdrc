@@ -16,28 +16,29 @@ alt + {_,shift + }q
 
 #Terminal
 super + Return
-    wezterm
-    # alacritty
+    alacritty
 
 # Recargar por defecto
 super + alt {r,e}
 			{bspc wm -r;dunstify -i ~/.local/bin/scripts/arch.png BSPWMRC RECARGADO,pkill -USR1 -x sxhkd;dunstify -i ~/.local/bin/scripts/arch.png SXHKDRC RECARGADO}
 
 # Rofi menu launcher(s)
-super + {x,a}
-  {key-power,rofi-net,$(sh ~/Scripts/Modules/runmenu.sh)}
+super + {a}
+  {rofi-net,$(sh ~/Scripts/Modules/runmenu.sh)}
+
+super + x
+  ~/.bscripts/rofi.sh outopts
 
 # Rofi app launcher
+# alt + F1
+#   key-menu
+
 alt + F1
-  key-menu
+  ~/.bscripts/rofi.sh drun
 
+super + Tab
+  ~/.bscripts/rofi.sh window
 #
-super + {_,shift +} d
-		{rofi -modi drun -show drun -width 22,pass rofi_root}
-
-~button3
-  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 
-
 super + shift + w
   {nitrogen --set-zoom-fill --save --random Pictures/Wallpapers}
 
@@ -81,16 +82,21 @@ super + f
 		 bspc node -t {fullscreen,tiled}
 
 # Volver a el area de trabajo anterior
-alt + {grave,Tab}
-		bspc {node,desktop} -f last
+# alt + {grave,Tab}
+# 		bspc {node,desktop} -f last
+
+alt + tab
+  ~/.bscripts/wpm_reports.sh select -1
 
 # Enviar ventanas a otra area de trabajo
 super + {_,alt + }{1-9,0}
 		bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Area de trabajo
-alt + {1-9,0}
-	bspc desktop -f '^{1-9,10}'
+# alt + {1-9,0}
+# 	bspc desktop -f '^{1-9,10}'
+alt + {1-9, 0}
+  ~/.bscripts/wpm_reports.sh jump {0,1-9}
 
 
 #________________________move/resize____________________________________
@@ -109,11 +115,21 @@ super + ctrl + {1-9}
 		bspc node -o 0.{1-9}
 #_______________________Multimedia______________________________________
 # Subir,Bajar Volumen
-XF86Audio{Raise,Lower}Volume
-		amixer sset Master 5%{+,-}
+# XF86Audio{Raise,Lower}Volume
+# 		amixer sset Master 5%{+,-}
 # Mute
+# XF86AudioMute
+# 		amixer -D pulse set Master 1+ toggle
+
+XF86AudioRaiseVolume
+  ~/.bscripts/volume.sh up
+
+XF86AudioLowerVolume
+  ~/.bscripts/volume.sh down
+
 XF86AudioMute
-		amixer -D pulse set Master 1+ toggle
+  ~/.bscripts/volume.sh mute
+
 # Play/Pause
 shift + F7
 		dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
@@ -132,11 +148,17 @@ XF86MonBrightnessUp
 
 #__________________________Scripts______________________________________
 # Menu de capturas
-Print {_,shift + }
-		{maim -m 1 D-shot-captura-pantalla-"$(date '+%y%m%d-%H%M-%S').png",$HOME/.local/bin/scripts/menucaptura}
+# Print {_,shift + }
+# 		{maim -m 1 D-shot-captura-pantalla-"$(date '+%y%m%d-%H%M-%S').png",$HOME/.local/bin/scripts/menucaptura}
 # Menu de grabacion de video
 super + Print
 		$HOME/.local/bin/scripts/menugrabacion
+
+# Screenshot
+Print
+  ~/.bscripts/ss.sh
+alt + Print
+  sleep 3 && ~/.bscripts/ss.sh
 
 # Monitor
 super + shift + m

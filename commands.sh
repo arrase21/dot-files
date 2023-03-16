@@ -9,12 +9,11 @@ CNC=$(tput sgr0)
 OK='\n\033[0;32m OK...\033[0m'
 
 logo () {
-	
 	local text="${1:?}"
-	echo -en "                                  
-	               %%%                
-	        %%%%%//%%%%%              
-	      %%************%%%           
+	echo -en "
+	               %%%
+	        %%%%%//%%%%%
+	      %%************%%%
 	  (%%//############*****%%
 	%%%%%**###&&&&&&&&&###**//
 	%%(**##&&&#########&&&##**
@@ -27,13 +26,12 @@ logo () {
 	       &&&         &&&
 	       &&&////   &&
 	          &&//@@@**
-	            ..***                
+	            ..***
 			  arrase Script\n\n"
     printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
     sleep 5
 }
 
-	
 logo "Welcome!"
 printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\nThis installer script does NOT change any configuration of your system.\nIts just a script that copies and moves my dotfiles to your ~/.config directory\n\n' "${CRE}" "${CNC}"
 sleep 3
@@ -57,25 +55,31 @@ logo "Checking if yay is installed"
 		sudo pacman -Syu git && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd
 	fi
 sleep 2
+echo "Create gnup"
+sleep 2
+mkdir -p ~/.local/share/gnupg
+sleep 2
 clear
-		
 logo "Installing needed packages.."
 
-      sudo pacman -S ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels\ 
-            ttf-font-awesome telegram-desktop nodejs npm xdotool lazygit wine
-					 
+      sudo pacman -S ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels\
+        ttf-font-awesome telegram-desktop nodejs npm xdotool lazygit wine --needed
+
 	  yay -S --needed \
-        sxhkd bspwm alacritty zsh neovim stalonetray \
+        sxhkd bspwm alacritty polybar fish neovim stalonetray \
         plank dunst rofi jgmenu xprintidle i3lock-color zathura \
         broot fzf mpv neofetch ranger ueberzug xdo perl cava \
         xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq \
         maim ant-dracula-kvantum-theme-git ant-dracula-theme-git \
         papirus-icon-theme kvantum pacman-contrib xorg-xbacklight \
-        imagemagick nerd-fonts-cozette-ttf scientifica-font font-awesome-5
+        imagemagick nerd-fonts-cozette-ttf scientifica-font font-awesome-5\
+        blueman colorpicker imagemagick jq kitty light lxappearance mantablockscreen\
+        playerctl polkit-gnome scrot sox spicetify-cli spotify sysstat tumbler wmctrl\
+        wpgtk-git acpi alsa-utils-git xorg-xwininfo picom-animations-git
 
-			  
+
 clear
-			 
+
 logo "Cloning REPO!"
 printf "Cloning rice from https://github.com/arrase21/dot-files\n\n"
 git clone --depth=1 https://github.com/arrase21/dot-files.git
@@ -86,8 +90,8 @@ logo "Backup your files"
 printf "Backup files will be stored in %s%s/YourBackups%s \n\n" "${CRE}" "$HOME" "${CNC}"
 sleep 5
 
-if [ ! -d "$HOME/YourBackups" ]; then 
-	mkdir "${HOME}"/YourBackups	
+if [ ! -d "$HOME/YourBackups" ]; then
+	mkdir "${HOME}"/YourBackups
 fi
 
 [ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/YourBackups/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
@@ -129,9 +133,9 @@ else
 	mkdir -p ~/.config && cp -r ~/repos/dot-files/config/* ~/.config
 fi
 
-cp -r ~/repos/dot-files/.bin/* ~/
-cp -r ~/repos/dot-files/.profile/* ~/
-cp -r ~/repos/dot-files/.Xresources/* ~/
+cp -r ~/repos/dot-files/.bin/ ~/
+cp -r ~/repos/dot-files/.profile ~/
+cp -r ~/repos/dot-files/.Xresources ~/
 cp -r ~/repos/dot-files/Scripts/* ~/
 
 if [ -d "$HOME/.local/bin" ]; then
