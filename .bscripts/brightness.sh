@@ -5,7 +5,7 @@
 # brightness.sh [up|down]
 
 function get_brightness {
-    var=`light -G`
+    var=`brillo -G`
     echo "${var##* }" | sed 's/[^0-9][^.]*//g'
 }
 
@@ -22,21 +22,21 @@ case $1 in
     up)
     	# Raise the brightness (+ 5%)
 	    brightness=`get_brightness`
-	    rem=$(( (brightness + 5) % 5 ))
-	    inc=$(( 5 - rem ))
-        brightness=$(( brightness + inc ))
-        [[ $brightness -eq 0 ]] && brightness=1
-	    light -S $brightness  > /dev/null
+	    rem=$(( (brightness - 5) % 5 ))
+	    inc=$(( 5 + rem ))
+      brightness=$(( brightness + inc ))
+      [[ $brightness -eq 0 ]] && brightness=1
+	    brillo -S $brightness  > /dev/null
 	    send_notification
 	;;
     down)
-        # Lower the brightness (- 5%)              
-        brightness=`get_brightness`             
-        rem=$(( (brightness - 5) % 5 ))         
-        inc=$(( 5 + rem ))                                    
-        brightness=$(( brightness - inc ))    
-        [[ $brightness -eq 0 ]] && brightness=1    
-        light -S $brightness > /dev/null
+      # Lower the brightness (- 5%)              
+      brightness=`get_brightness`             
+      rem=$(( (brightness - 5) % 5 ))         
+      inc=$(( 5 + rem ))                                    
+      brightness=$(( brightness - inc ))    
+      [[ $brightness -eq 0 ]] && brightness=1    
+      brillo -S $brightness > /dev/null
 	    send_notification
 	;;
 esac
