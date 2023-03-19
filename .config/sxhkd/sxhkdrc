@@ -26,15 +26,27 @@ super + alt {e}
 super + {a}
   {rofi-net,$(sh ~/Scripts/Modules/runmenu.sh)}
 
-super + x
-  ~/.bscripts/rofi.sh outopts
+super + alt {r}
+			{bspc wm -r;dunstify -i ~/.local/bin/scripts/arch.png BSPWMRC RECARGADO}
+
+# super + x
+#   ~/.bscripts/rofi.sh outopts
 
 # Rofi app launcher
 # alt + F1
 #   key-menu
 
+
+super + d
+    sh $HOME/.local/bin/dashboard
+
+# alt + F1
+#   ~/.bscripts/rofi.sh drun
 alt + F1
-  ~/.bscripts/rofi.sh drun
+  sh ~/.config/rofi/alternative/bin/launcher
+
+super + {x,s}
+	sh ~/.config/rofi/alternative/bin/{powermenu,screenshot}
 
 super + Tab
   ~/.bscripts/rofi.sh window

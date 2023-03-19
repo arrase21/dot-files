@@ -7,7 +7,7 @@
 
   text-color: #ffc994;
 
-  borders: #ff4647;
+  borders: #193855;
   borders-alt: #8dffff;
   background-color: @bg;
   

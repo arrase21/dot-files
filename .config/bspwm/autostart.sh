@@ -20,7 +20,7 @@ while pgrep picom > /dev/null;
 do
     sleep 0.1
 done;
-picom --experimental-backends &
+picom &
 # Set wallpapper
 nitrogen --restore &
 

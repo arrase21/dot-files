@@ -1,0 +1,94 @@
+#!/bin/bash
+
+LOCK_FILE="$HOME/.cache/eww-lock.lock"
+
+hide_unhide_windows() {
+	while bspc node any.hidden.window -g hidden=off; do false; done && while bspc node 'any.!hidden.window' -g hidden=on; do :; done
+}
+
+lock() {
+    sleep 1.5
+	$HOME/.local/bin/eww open-many lock-screen
+
+	i3lock -n -c 00000000 -t -e --pass-media-keys --pass-power-keys --pass-volume-keys --indicator --force-clock \
+		--radius 52 --modif-size=9 --modif-pos="w/2:h/2-15" \
+		\
+		--time-str="%H:%M" \
+		--time-pos="w/2:h/4" \
+		--time-color=0b0f10 \
+		--time-size=120 \
+		--time-font="DM Sans" \
+		\
+		--date-str="%A, %B %d" \
+		--date-pos="w/2:h/4+40" \
+		--date-color=0b0f10 \
+		--date-size=35 \
+		--date-font="DM Sans" \
+		\
+		--verif-text="" \
+		--verif-color=7ba5dd \
+		--verif-size=10 \
+		--verif-font="Sarasa Mono CL Nerd Font" \
+		\
+		--wrong-text="" \
+		--wrong-color=ee6a70 \
+		--wrong-size=10 \
+		--wrong-font="Sarasa Mono CL Nerd Font" \
+		\
+		--greeter-text="" \
+		--greeter-color=96d6b0 \
+		--greeter-size=60 \
+		--greeter-font="Material Icons" \
+		--greeter-pos="w/2:h/2+285" \
+		\
+		--ring-color=00000000 \
+		--ringver-color=96D6B0 \
+		--ringwrong-color=ee6a70 \
+		--ring-width=5 \
+		\
+		--insidever-color=079A8C02 \
+		--insidewrong-color=079A8C02 \
+		--inside-color=079A8C02 \
+		--ind-pos="w/2:h-130" \
+		\
+		--noinput-text="" \
+		\
+		--line-uses-inside --keyhl-color=cb92f2 --bshl-color=ee6a70 --separator-color=00000000 \
+		\
+		--pointer=default
+}
+
+finish() {
+	$HOME/.local/bin/eww close-all
+	$HOME/.local/bin/tglbar
+	hide_unhide_windows
+	rm "$LOCK_FILE"
+}
+
+run() {
+    $HOME/.local/bin/termeww
+	$HOME/.local/bin/tglbar
+	hide_unhide_windows
+	lock
+}
+
+status=$(playerctl -p %any status || true)
+if [ "$status" == "Playing" ]; then
+	playerctl pause
+fi
+
+if [[ ! -f "$LOCK_FILE" ]]; then
+	if pgrep -x rofi; then
+		killall rofi
+	fi
+
+	touch "$LOCK_FILE"
+	run
+fi
+
+finish
+
+status2=$(playerctl -p %any status || true)
+if [ "$status2" == "Paused" ]; then
+	playerctl play
+fi
