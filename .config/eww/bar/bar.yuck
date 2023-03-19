@@ -1,5 +1,4 @@
 (include "./bar/widgets/_calendar.yuck")
-(include "./bar/widgets/_powermenu.yuck")
 
 (defwidget launcher[]
   (box :orientation "h"
@@ -62,16 +61,6 @@
 )
 (defpoll dateval :interval "1s" "scripts/getDate")
 
-(defwidget powermenu []
-  (box :orientation "h"
-       :space-evenly "false"
-       :class "powermenu-box"
-    (button :class "dispatcher"
-            :tooltip "Toggle Power Menu"
-            :onclick "sh ~/.config/bspwm/rofi/bin/powermenu"
-            "⏻")
-  )
-)
 
 (defwidget actionsbox []
   (button :class "actionsbox" :onclick "eww -c ~/.config/eww open --toggle actions"
@@ -104,7 +93,6 @@
     (actionsbox)
     (battery)
     (datebox)
-    (powermenu)
   )
 )
 
@@ -120,8 +108,8 @@
 (defwindow bar
    :geometry (geometry :x "0px"
                        :y "5px"
-                       :width "72%"
-                       :height "46px"
+                       :width "96%"
+                       :height "36px"
                        :anchor "top center")
    :focusable true
    :stacking "bg"

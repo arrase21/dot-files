@@ -1,7 +1,7 @@
 .bar {
   border-radius: 12px;
   background-color: $bg;
-  font-family: all-the-icons;
+  font-family: "all-the-icons";
   font-size: 12px;
   color: $fg;
 }
@@ -10,21 +10,23 @@
   margin: 7px 0 7px 7px;
   font-size: 16px;
   .dispatcher {
-    background-color: $accent;
-    color: $bg;
+    background-color: $magenta;
+    // color: $bg;
     border-radius: 10px;
-    font-size: inherit;
+    // font-size: inherit;
     padding: 0 8px;
   }
 }
 
 .works {
-  margin-top: 6px;
+  margin-top: 1px;
+  color: $magenta;
+  font-family: "JetBrains Mono Nerd Font";
   margin-left: 13px;
-  font-size: 15px;
+  font-size: 20px;
 
   .0 {
-    padding: 7px 8px;
+    padding: 3px 8px;
   }
 
   .01,
@@ -36,7 +38,7 @@
   .07,
   .08,
   .09 {
-    color: $fg;
+    color: $blue;
     padding: 7px 8px;
   }
 
@@ -49,15 +51,15 @@
   .077,
   .088,
   .099 {
-    color: $accent;
+    color: $yellow;
     padding: 7px 8px;
   }
 }
 
 .wintitle {
-  font-family: Product Sans;
-  background-color: $bg;
-  color: $cyan;
+  font-family: "JetBrains Mono Nerd Font";
+  // background-color: $bg;
+  color: $fg;
   margin: 7px 0;
   padding: 0 10px;
   border-radius: 10px;
@@ -65,9 +67,9 @@
 }
 
 .date-box {
-  font-family: Product Sans;
+  font-family: "Product Sans";
   font-weight: bold;
-  background: $bg;
+  // background: $bg;
   margin: 7px 0px 7px 0;
   padding: 0 2px 0 14px;
   border-radius: 10px;
@@ -83,7 +85,7 @@
 }
 
 .sep {
-  color: rgba($color: #000000, $alpha: 0);
+  // color: rgba($color: #000000, $alpha: 0);
   padding: 0;
 }
 
@@ -104,35 +106,37 @@
 }
 
 calendar:selected {
-  color: $accent;
+  color: $magenta;
 }
 
 calendar.header {
-  color: $cyan;
+  color: $purple;
   font-weight: bold;
 }
 
 calendar.button {
-  color: $cyan;
+  color: $purple;
 }
 
 calendar.highlight {
   background: none;
-  color: $green;
+  color: $purple;
   font-weight: bold;
 }
 
 // controls dispatcher
 .actionsbox {
-  background: $bg;
+  font-size: 20px;
+  font-family: "JetBrains Mono Nerd Font";
+  // background: $bg;
   border-radius: 10px;
   padding: 0 12px;
   margin: 7px 0px;
 }
 
 .battery__box {
-  font-family: Product Sans;
-  background: $bg;
+  font-family: "JetBrains Monon Nerd Font";
+  // background: $bg;
   border-radius: 10px;
   margin: 7px 0;
   padding: 0 11px 0 1px;
@@ -143,23 +147,5 @@ calendar.highlight {
     margin-left: -5px;
     font-size: 14px;
     font-weight: 500;
-  }
-}
-
-.powermenu-box {
-  margin: 7px 7px 7px 0px;
-  background: inherit;
-  .dispatcher {
-    border-radius: 10px;
-    background: $bg;
-    color: $cyan;
-    font-size: 13px;
-    padding: 0 10px;
-    &:hover {
-      background-color: $contrastbg;
-    }
-    &:active {
-      background-color: $bgSecondary;
-    }
   }
 }

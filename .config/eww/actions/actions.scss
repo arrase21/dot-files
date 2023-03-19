@@ -1,5 +1,5 @@
 .actions {
-  background-color: $bg;
+  // background-color: $bg;
   color: $fg;
   font-family: Product Sans;
   padding: 10px;
@@ -7,18 +7,18 @@
 
 .controlsbox {
   border-radius: 24px;
-  background-color: $bg;
+  // background-color: $bg;
   padding: 20px 14px 20px 18px;
 }
 
 .slider {
-  .label{
-    font-family: 'JetBrainsMono Nerd Font';
+  .label {
+    font-family: "JetBrainsMono Nerd Font";
     color: $fg;
     font-size: 18px;
     padding-right: 20px;
   }
-  .scale-label{
+  .scale-label {
     min-width: 40px;
     color: $fg;
     font-size: 13px;
@@ -31,7 +31,7 @@
     border-radius: 100px;
 
     highlight {
-      background-color: $accent;
+      background-color: $purple;
       border-radius: 100px;
     }
   }
@@ -40,7 +40,7 @@
 .active {
   trough {
     slider {
-      background: $accent;
+      // background: $accent;
       border-radius: 100%;
       margin: -8px;
     }
@@ -56,14 +56,18 @@
   }
   .useractions {
     .logout {
-      background-color: $bg;
-      font-family: 'JetBrainsMono Nerd Font';
+      // background-color: $bg;
+      font-family: "JetBrainsMono Nerd Font";
       font-size: 18px;
       padding: 2px 11px 2px 8px;
       border-radius: 10px;
-      transition: all ease .2s;
-      &:hover { background-color: $bg; }
-      &:active { background-color: $bg; }
+      transition: all ease 0.2s;
+      &:hover {
+        background-color: $purple;
+      }
+      &:active {
+        background-color: $purple;
+      }
     }
   }
 }
@@ -71,33 +75,37 @@
 .sysbuttonsbox {
   .block-container {
     .block {
-      background-color: $bg; 
+      background-color: $bg;
       padding: 18px 0px 18px 6px;
       min-width: 170px;
       border-radius: 25px;
-      transition: all ease .2s;
+      transition: all ease 0.2s;
       color: $fg;
-      &:hover { background-color: $bgSecondary; }
-      &:active { 
-        background-color: $contrastbg; 
+      &:hover {
+        background-color: $purple;
+      }
+      &:active {
+        background-color: $purple;
         color: $fg;
       }
       &.active {
         color: $bgSecondary;
-        background-color: $accent;
-        &:hover { background-color: $bg; }
+        background-color: $purple;
+        &:hover {
+          background-color: $bg;
+        }
         &:active {
-        background-color: $bg;
+          background-color: $bg;
         }
       }
       .iconbox .icon {
         font-size: 18px;
-        font-family: 'JetBrainsMono Nerd Font';
+        font-family: "JetBrainsMono Nerd Font";
         padding: 0px 17px 0px 12px;
       }
       .chevronbox {
         margin-right: 14px;
-        font-family: 'JetBrainsMono Nerd Font';
+        font-family: "JetBrainsMono Nerd Font";
       }
     }
     .labelbox {
@@ -114,24 +122,23 @@
   }
 }
 
-
 .musicbox {
   color: #fff;
   border-radius: 26px;
   padding: 11px 16px;
   transition: background 250ms;
   .musicbox__top {
-    font-size: 23px; 
-    font-family: 'JetBrainsMono Nerd Font';
+    font-size: 23px;
+    font-family: "JetBrainsMono Nerd Font";
   }
 }
 
 .musicbox__center--metadata {
-  .title{
+  .title {
     font-weight: 500;
     transition: text 250ms;
   }
-  .artist{
+  .artist {
     font-weight: 400;
     font-size: 15px;
     transition: text 250ms;
@@ -144,17 +151,16 @@
 }
 
 .playing {
-  transition: all ease .2s;
+  transition: all ease 0.2s;
   border-radius: 15px;
 }
 
 .paused {
-  border-radius: 26px;  
-  transition: all ease .2s;
+  border-radius: 26px;
+  transition: all ease 0.2s;
   padding: 14px 14px 14px 18px;
 }
 
-
 .musicbox__bottom {
- font-size: 23px;
+  font-size: 23px;
 }

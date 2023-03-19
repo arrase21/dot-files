@@ -36,36 +36,36 @@ f7=$(bspc query -D -d focused --names | grep "$ws7" )
 f8=$(bspc query -D -d focused --names | grep "$ws8" )
 f9=$(bspc query -D -d focused --names | grep "$ws9" )
 
-ic_1=""
-ic_2=""
-ic_3=""
-ic_4=""
-ic_5=""
-ic_6=""
-ic_7=""
-ic_8=""
-ic_9=""
+ic_1="󰑊"
+ic_2="󰑊"
+ic_3="󰑊"
+ic_4="󰑊"
+ic_5="󰑊"
+ic_6="󰑊"
+ic_7="󰑊"
+ic_8="󰑊"
+ic_9="󰑊"
 #
 if [ $o1 ]; then
-    ic_1=""
+    ic_1="󰊠"
 fi
 if [ $o2 ]; then
-    ic_2=""
+    ic_2="󰊠"
 fi
 if [ $o3 ]; then
-    ic_3=""
+    ic_3="󰊠"
 fi
 if [ $o4 ]; then
-    ic_4=""
+    ic_4="󰊠"
 fi
 if [ $o5 ]; then
-    ic_5=""
+    ic_5="󰊠"
 fi
 if [ $o6 ]; then
-    ic_6=""
+    ic_6="󰊠"
 fi
 if [ $o7 ]; then
-    ic_7=""
+    ic_7="󰊠"
 fi
 if [ $o8 ]; then
     ic_8=""
