@@ -1,7 +1,11 @@
-* {
-  all: unset;
-}
+@import "./src/scss/variables";
+@import "./src/scss/overrides";
+@import "./src/scss/modules";
 
-@import "_colors.scss";
-@import "bar/bar.scss";
-@import "actions/actions.scss";
+@import "./src/scss/bar/index.scss";
+@import "./src/scss/control-center/index.scss";
+@import "./src/scss/exitscreen/index.scss";
+@import "./src/scss/info-center/index.scss";
+@import "./src/scss/lockscreen/index.scss";
+@import "./src/scss/notification-center/index.scss";
+@import "./src/scss/notification-popup/index.scss";
