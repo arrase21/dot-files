@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "--tr" ]]; then
+	 alacritty
+
+elif [[ "$1" == "--ff" ]]; then
+	opera
+
+elif [[ "$1" == "--fm" ]]; then
+	thunar
+
+elif [[ "$1" == "--ge" ]]; then
+	geany &
+
+elif [[ "$1" == "--tg" ]]; then
+	telegram-desktop
+	
+elif [[ "$1" == "--wa" ]]; then
+	whatsapp-nativefier --disable-gpu
+	
+elif [[ "$1" == "--up" ]]; then
+	alacritty
+
+fi

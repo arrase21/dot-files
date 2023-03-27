@@ -58,3 +58,12 @@ killall winevents.sh
 # Autosuspend
 killall idle.sh
 pgrep idle.sh || ~/.bscripts/idle.sh > /dev/null 2> /dev/null&
+
+
+polybar -q bar1 -c ~/.config/polybar/config.ini &
+polybar -q bar2 -c ~/.config/polybar/config.ini & 
+polybar -q bar3 -c ~/.config/polybar/config.ini & 
+
+polybar -q bar1_external -c ~/.config/polybar/config.ini &
+polybar -q bar2_external -c ~/.config/polybar/config.ini &
+polybar -q bar5_external -c ~/.config/polybar/config.ini &

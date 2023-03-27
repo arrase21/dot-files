@@ -56,21 +56,10 @@ bspc subscribe node_state | while read -r _ _ _ _ state flag; do
 done &
 
 # pkill eww &
-#eww open bar &
-
-# eww -c ~/.config/eww/barol open bar
-# polybar -q karla-bar -c ~/.config/polybar/config.ini &
-# polybar -q karla-bar2 -c ~/.config/polybar/config.ini &
-
-# $HOME/.config/polybar/launch.sh
 
 # $HOME/.local/bin/eww -c $HOME/.config/eww/bar --restart open bar &
 
+# eww -c ~/.config/eww/barol/ open bar
 
-polybar -q pam1 -c ~/.config/polybar/config.ini &
-polybar -q pam2 -c ~/.config/polybar/config.ini & 
-polybar -q pam5 -c ~/.config/polybar/config.ini & 
 
-polybar -q pam1_external -c ~/.config/polybar/config.ini &
-polybar -q pam2_external -c ~/.config/polybar/config.ini &
-polybar -q pam5_external -c ~/.config/polybar/config.ini &
+# $HOME/.config/polybar/launch.sh

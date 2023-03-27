@@ -1,0 +1,19 @@
+window {
+  button:hover {
+    color: $accent;
+  }
+
+  .eww-bar {
+    background-color: #e1eaff;
+    color: purple;
+    border: 1px solid #161616;
+    border-radius: 12px;
+    font-family: "DM Sans";
+    font-weight: normal;
+  }
+
+  .separator {
+    color: $lighter-background;
+    font-size: 2em;
+  }
+}

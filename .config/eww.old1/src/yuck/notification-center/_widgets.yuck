@@ -1,0 +1,62 @@
+(defwindow calendar
+  :geometry (geometry :x "70%"
+                      :y "6%" 
+                      :width "270px" 
+                      :height "60px")
+(cal))
+
+(defwidget cal []
+  (box :class "cal-box" :orientation "v"
+    (calendar :class "cal" :day calendar_day :month calendar_month :year calendar_year)
+  )
+)
+
+(defwidget notification-center []
+	(box :class "notification-center-window" :orientation "h" :space-evenly "false"
+		(box :class "notification-center-spacer" :style {noticenter ? "padding-left: 0em;" : "padding-left: 37em;"})
+		(box :class "notification-center-box" :orientation "v" :space-evenly "false" :style "margin-right: 6px;"
+			(box :space-evenly "true" :orientation "v" :style "min-width: 315px;"
+				(scroll :class "notification-scroller" :vscroll "true"
+					(box :class "notification-history" :orientation "v" :space-evenly "false"
+						(box :orientation "v"
+							(for entry in {dunst_history["data"][0]}
+								(box
+									(notification :class 'notif-${entry["id"]["data"]}'
+										:title {entry["appname"]["data"]}
+										:summary {entry["summary"]["data"]}
+										:body {entry["body"]["data"]}
+										:icon {entry["appname"]["data"] == "Spotify" ? "../../.cache/dunst/${entry['summary']['data']}.png" :
+											entry["appname"]["data"] == "discord" ? "./assets/applications/discord.png" :
+											(entry["icon_path"]["data"] ?: "../dunst/assets/notification/fallback.png")}
+										:reveal_close_icon "false"
+										:is_ss {entry["appname"]["data"] == "Screenshot Tool" ? "true" : "false"}
+									)
+								)
+							)
+						)
+						(revealer :reveal reveal_no_notification_text :transition "crossfade"
+							(box :orientation "v" :space-evenly "false"
+								:style {reveal_no_notification_text ? "margin: 3em 0em;" : "margin: 0em 0em;"}
+								(image :style "margin-bottom: 2em;" :path "./assets/ui/wedding-bells.png")
+								(label :class "eon" 
+									:valign "center"
+									:text "No Notifications."
+								)
+							)
+						)
+					)
+				)
+			)
+			(box :class "calendar" :orientation "v"
+				(box :class "date-box"
+					:orientation "v"
+					:space-evenly "false"
+					(label :class "month-year" :text month_year)
+					(box :class "day-names" :orientation "h" :space-evenly "true")
+          (calendar :class "cal" :day calendar_day :month calendar_month :year calendar_year)
+        )
+			)
+		)
+	)
+)
+(defvar noticenter false)
