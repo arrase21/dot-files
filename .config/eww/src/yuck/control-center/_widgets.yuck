@@ -69,7 +69,11 @@
 						:is_active {dnd_status == "#1c2325"} :onclick "sh ./scripts/dashActions.sh dnd"
 						:tooltip "Status: ${dnd_status == '#1c2325' ? 'On' : 'Off'}"
 					)
-					(cc_button :disabled "true")
+          (cc_button :title "Mic" :icon ""
+						:is_active {mic_mode_status == "yes"}
+            :onclick "sh ./scripts/mic.sh toggle"
+						:tooltip "Status: ${mic_mode_status == '' ? 'On' : 'Off'}"
+					)
 				)
 			)
 			(box :class "second-row" :orientation "v"

@@ -86,6 +86,9 @@
 (defpoll dnd_status :interval "1s"
 	"./scripts/dashActions.sh dndstat")
 
+(defpoll mic_mode_status :interval "1s"
+  "./scripts/mic.sg ")
+
 ;; NOTIFICATION CENTER/POPUP VARS
 (defpoll dunst_history :interval "250ms" :run-while noticenter
 	"dunstctl history")
