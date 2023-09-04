@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 wezterm.on("update-right-status", function(window)
 	window:set_right_status(window:active_workspace())
@@ -59,4 +60,14 @@ return {
 	default_prog = { "tmux", "new-session" },
 
 	disable_default_key_bindings = true,
+	keys = {
+		-- paste from the clipboard
+		{ key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+		{ key = "V", mods = "CTRL", action = act.PasteFrom("PrimarySelection") },
+		{
+			key = "C",
+			mods = "CTRL",
+			action = wezterm.action.CopyTo("ClipboardAndPrimarySelection"),
+		},
+	},
 }
