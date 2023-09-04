@@ -16,7 +16,7 @@ alt + {_,shift + }q
 
 #Terminal
 super + Return
-    alacritty
+    wezterm
 
 # Recargar por defecto
 super + alt {e}

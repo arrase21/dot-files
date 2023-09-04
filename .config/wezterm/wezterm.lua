@@ -1,13 +1,3 @@
-
---[[ local wezterm = require 'wezterm'
-
-return {
-  font = wezterm.font('Comic Code Ligatures', { weight = 'Regular', italic = true }),
-  harfbuzz_features = { 'calt=0', 'clig=0', 'liga=1' },
-
-  color_scheme = "Dracula (official)",
-} ]]
-
 local wezterm = require("wezterm")
 
 wezterm.on("update-right-status", function(window)
@@ -15,12 +5,20 @@ wezterm.on("update-right-status", function(window)
 end)
 
 -- A helper function for my fallback fonts
+local function font_with_fallback(name, params)
+	local names = { name, "Noto Color Emoji", "JetBrains Mono" }
+	return wezterm.font_with_fallback(names, params)
+end
+
+local fonts = {
+	"JetBrainsMono Nerd Font",
+	"VictorMono Nerd Font",
+}
+
+local font = fonts[2]
 
 return {
-
-  font = wezterm.font('JetBrainsMonoNl Nerd Font', { weight = 'DemiBold', italic = true }),
 	-- General configuration
-   bold_brightens_ansi_colors = true,
 	audible_bell = "Disabled",
 	window_close_confirmation = "NeverPrompt",
 	use_fancy_tab_bar = false,
@@ -34,9 +32,31 @@ return {
 	},
 
 	-- Font and color scheme
-	font_size = 11.5,
-	-- use_resize_increments = true,
-	-- line_height = 1.0,
-	color_scheme = "Neon",
-    window_background_opacity = 0.88,
-	}
+	font = font_with_fallback(font, { weight = "DemiBold" }),
+	font_rules = {
+		-- Select a fancy italic font for italic text
+		{
+			italic = true,
+			font = font_with_fallback(font, { weight = "DemiBold", italic = true }),
+		},
+
+		-- Similarly, a fancy bold+italic font
+		{
+			italic = true,
+			intensity = "Bold",
+			font = font_with_fallback(font, { weight = "ExtraBold", italic = true }),
+		},
+	},
+	font_size = 12,
+	use_resize_increments = true,
+	line_height = 1.0,
+	-- color_scheme = "Eqie6 (terminal.sexy)",
+	window_background_opacity = 0.9,
+	color_scheme = "Dracula (Official)",
+	tab_bar_at_bottom = true,
+	window_decorations = "RESIZE",
+
+	default_prog = { "tmux", "new-session" },
+
+	disable_default_key_bindings = true,
+}
