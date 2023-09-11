@@ -17,7 +17,7 @@ auto(){
 }
 
 on(){
-    bspc config top_padding 70
+    bspc config top_padding 50
     for wid in `xdotool search --class eww-`; 
     do 
         xdotool windowmap --sync $wid
