@@ -10,11 +10,18 @@ rofi_command="rofi -theme $DIR/alternative/themes/five.rasi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options
-shutdown=""
-reboot=""
-lock=""
+
+# shutdown=""
+# reboot=""
+# lock=""
+# suspend=""
+# logout=""
+
+shutdown="⏻"
+reboot="↺"
+lock="🗝"
 suspend=""
-logout=""
+logout="➡"
 
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
@@ -39,7 +46,7 @@ case $chosen in
         fi
         ;;
     $lock)
-        sh $HOME/.config/bspwm/i3lock/i3lock
+        sh $HOME/.config/i3lock/i3lock
         ;;
     $suspend)
 		ans=$($HOME/.config/rofi/alternative/bin/confirm)

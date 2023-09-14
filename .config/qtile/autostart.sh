@@ -11,20 +11,22 @@ for i in "${loop[@]}"; do
   $i &
 done
 
-if [[ ! $(pidof stalonetray) ]]; then
-  pkill eww &
-  stalonetray &
-  xdo hide -n stalonetray
-  touch "/tmp/syshide.lock"
-fi
+# if [[ ! $(pidof stalonetray) ]]; then
+#   pkill eww &
+#   stalonetray &
+#   xdo hide -n stalonetray
+#   touch "/tmp/syshide.lock"
+# fi
 
 # Compositor
 killall picom 
 picom &
+# killall eww
+# eww &
 # Set wallpapper
 # nitrogen --restore &
 
-startup &
+# startup &
 
 # fix pointer
 # xsetroot -cursor_name left_ptr &
@@ -37,18 +39,18 @@ startup &
 
 
 # Start copyq
-copyq --start-server &
+# copyq --start-server &
 
 # Reached end of script
 pkill -9 -f "dunst"
-dunstify -i window_list "Successfully restarted BSPWM"
+# dunstify -i window_list "Successfully restarted BSPWM"
 dunst > /dev/null 2> /dev/null &
-thunar --daemon&
+# thunar --daemon&
 
 
 # Window event monitoring
-killall winevents.sh
-~/.bscripts/winevents.sh&
+# killall winevents.sh
+# ~/.bscripts/winevents.sh&
 
 # Autosuspend
 killall idle.sh
