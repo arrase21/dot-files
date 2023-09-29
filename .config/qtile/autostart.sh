@@ -19,7 +19,7 @@ done
 # fi
 
 # Compositor
-killall picom 
+# killall picom 
 picom &
 # killall eww
 # eww &

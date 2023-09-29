@@ -17,11 +17,11 @@ uptime=$(uptime -p | sed -e 's/up //g')
 # suspend=""
 # logout=""
 
-shutdown="⏻"
+shutdown="󰤆"
 reboot="↺"
 lock="🗝"
 suspend=""
-logout="➡"
+logout="󰿅"
 
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
@@ -53,7 +53,7 @@ case $chosen in
 		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
 			mpc -q pause
 			amixer set Master mute
-			i3lock --suspend
+			i3lock
 		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit
         fi

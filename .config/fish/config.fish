@@ -16,6 +16,14 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias t "tmux"
 alias g git
+alias cw "cd /home/arrase/workspaces/"
+alias mys "sudo systemctl start mysqld"
+alias mysk "sudo systemctl stop mysqld"
+alias htp "sudo systemctl start httpd"
+alias htpk "sudo systemctl stop httpd"
+alias pv "python -m venv .env"
+alias pva "source .env/bin/activate.fish"
+
 command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim
@@ -40,6 +48,7 @@ function __check_rvm --on-variable PWD --description 'Do nvm stuff'
   else
   end
 end
+
 
 #switch (uname)
 #  case Darwin

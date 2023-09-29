@@ -70,7 +70,7 @@ logo "Installing needed packages.."
 dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rustup polybar\
         ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
 			  webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm tmux\
-			  jq polkit-gnome playerctl mpd xclip lsd \
+			  jq polkit-gnome playerctl mpd xclip lsd qtile\
         dunst rofi jgmenu xprintidle i3lock-color zathura xdotool nodejs \
         broot fzf mpv neofetch ranger ueberzug xdo perl cava npm\
         xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq \
@@ -113,7 +113,6 @@ clear
 ########## ---------- Cloning the Rice! ---------- ##########
 
 logo "Downloading dotfiles"
-[ -d ~/repos/dot-files ] 
 printf "Cloning rice from https://github.com/arrase/dot-files\n"
 cd
 cd repos
@@ -150,7 +149,7 @@ logo "Installing dotfiles.."
 printf "Copying files to respective directories..\n"
 
 
-for archivos in ~/repos/dot-files/config/*; do
+for archivos in ~/repos/dot-files/.config/*; do
   cp -R "${archivos}" ~/.config/
   if [ $? -eq 0 ]; then
 	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
