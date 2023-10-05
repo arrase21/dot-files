@@ -23,6 +23,7 @@ alias htp "sudo systemctl start httpd"
 alias htpk "sudo systemctl stop httpd"
 alias pv "python -m venv .env"
 alias pva "source .env/bin/activate.fish"
+alias pga "source pgadmin4/bin/activate.fish"
 
 command -qv nvim && alias vim nvim
 
