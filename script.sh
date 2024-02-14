@@ -17,12 +17,11 @@ backup_folder=~/.RiceBackup
 date=$(date +%Y%m%d-%H%M%S)
 
 logo () {
-	
 	local text="${1:?}"
-	echo -en "                                  
-	               %%%                
-	        %%%%%//%%%%%              
-	      %%************%%%           
+	echo -en "
+	               %%%
+	        %%%%%//%%%%%
+	      %%************%%%
 	  (%%//############*****%%
 	%%%%%**###&&&&&&&&&###**//
 	%%(**##&&&#########&&&##**
@@ -67,10 +66,10 @@ clear
 logo "Installing needed packages.."
 
 
-dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rustup polybar\
+dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rustup polybar opera\
         ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-			  webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm tmux\
-			  jq polkit-gnome playerctl mpd xclip lsd qtile\
+	webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm tmux\
+	jq polkit-gnome playerctl mpd xclip lsd qtile\
         dunst rofi jgmenu xprintidle i3lock-color zathura xdotool nodejs \
         broot fzf mpv neofetch ranger ueberzug xdo perl cava npm\
         xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq \
