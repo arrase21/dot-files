@@ -1,17 +1,6 @@
-require "user.plugins"
-require "user.options"
-require "user.cmp"
-require "user.keymaps"
-require "user.treesitter"
-require "user.colorscheme"
-require "user.telescope"
-require "user.autopairs"
-require "user.lsp"
-require "user.bufferline"
-require "user.lualine"
-require "user.surround"
-require "user.rest"
-require "user.whichkey"
-require "user.lspsaga"
-require "user.floatterm"
-require "user.color"
+require("config.lazy")
+require("config.options")
+require("config.keymaps")
+require("arrase.autocmd")
+
+vim.cmd([[colorscheme solarized-osaka]])

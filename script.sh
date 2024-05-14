@@ -34,7 +34,7 @@ logo () {
 	       &&&         &&&
 	       &&&////   &&
 	          &&//@@@**
-	            ..***                
+	            ..***
 			  z0mbi3 Dotfiles\n\n"
     printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
 }
@@ -68,13 +68,13 @@ logo "Installing needed packages.."
 
 dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rustup polybar opera\
         ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-	webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm tmux\
-	jq polkit-gnome playerctl mpd xclip lsd qtile\
-        dunst rofi jgmenu xprintidle i3lock-color zathura xdotool nodejs \
+	      webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm-git tmux\
+	      jq polkit-gnome playerctl mpd xclip lsd qtile hyprland swaync waybar hyprpaper slurp grim\
+        dunst rofi-wayland jgmenu xprintidle i3lock-color zathura xdotool nodejs \
         broot fzf mpv neofetch ranger ueberzug xdo perl cava npm\
         xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq \
         maim ant-dracula-kvantum-theme-git ant-dracula-theme-git \
-        papirus-icon-theme kvantum pacman-contrib xorg-xbacklight brightnessctl\
+        kvantum pacman-contrib xorg-xbacklight brightnessctl\
         imagemagick nerd-fonts-cozette-ttf scientifica-font font-awesome-5)
 
 
@@ -106,7 +106,7 @@ if [ ! -e $HOME/.config/user-dirs.dirs ]; then
 else
 	echo "user-dirs.dirs already exists"
 fi
-sleep 2 
+sleep 2
 clear
 
 ########## ---------- Cloning the Rice! ---------- ##########
@@ -258,7 +258,7 @@ else
 	printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
-if ! command -v eww >/dev/null 2>&1; then 
+if ! command -v eww >/dev/null 2>&1; then
 	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
 	curl -sS https://github.com/elkowar.gpg | gpg --import -i -
 	curl -sS https://github.com/web-flow.gpg | gpg --import -i -
