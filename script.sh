@@ -68,7 +68,7 @@ logo "Installing needed packages.."
 
 dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rustup polybar opera\
         ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-	      webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm-git tmux\
+	      webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm-git tmux ly\
 	      jq polkit-gnome playerctl mpd xclip lsd qtile hyprland swaync waybar hyprpaper slurp grim\
         dunst rofi-wayland jgmenu xprintidle i3lock-color zathura xdotool nodejs \
         broot fzf mpv neofetch ranger ueberzug xdo perl cava npm\
