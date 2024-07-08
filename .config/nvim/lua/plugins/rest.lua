@@ -1,6 +1,7 @@
 return {
 	{
 		"vhyrro/luarocks.nvim",
+		event = "VeryLazy",
 		opts = {
 			rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }, -- Specify LuaRocks packages to install
 		},
@@ -9,6 +10,7 @@ return {
 	},
 	{
 		"rest-nvim/rest.nvim",
+		event = "VeryLazy",
 		ft = "http",
 		dependencies = { "luarocks.nvim" },
 		config = function()

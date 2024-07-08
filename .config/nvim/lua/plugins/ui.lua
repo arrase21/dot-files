@@ -1,15 +1,17 @@
 return {
 
-{ "MunifTanjim/nui.nvim" },
+	{ "MunifTanjim/nui.nvim" },
 	{ "RRethy/vim-illuminate" },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		main = "ibl",
+		commit = "29be0919b91fb59eca9e90690d76014233392bef",
 		opts = {
 			indent = { char = "┊" },
 		},
 	},
+
 	{
 		"echasnovski/mini.indentscope",
 		event = { "BufReadPre", "BufNewFile" },
@@ -102,33 +104,24 @@ return {
 				lsp_doc_border = false,
 			},
 		},
-    -- stylua: ignore
-    keys = {
-      { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                 desc = "Redirect Cmdline" },
-      { "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
-      { "<leader>snh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
-      { "<leader>sna", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
-      { "<leader>snd", function() require("noice").cmd("dismiss") end,                                desc = "Dismiss All" },
-      { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,              expr = true,              desc = "Scroll forward",  mode = { "i", "n", "s" } },
-      { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,              expr = true,              desc = "Scroll backward", mode = { "i", "n", "s" } },
-    },
 	},
 
 	{
 		"stevearc/dressing.nvim",
-		event = "VeryLazy",
+		lazy = true,
 		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
 			vim.ui.select = function(...)
 				require("lazy").load({ plugins = { "dressing.nvim" } })
 				return vim.ui.select(...)
 			end
+			---@diagnostic disable-next-line: duplicate-set-field
 			vim.ui.input = function(...)
 				require("lazy").load({ plugins = { "dressing.nvim" } })
 				return vim.ui.input(...)
 			end
 		end,
 	},
-
 	{
 		"rcarriga/nvim-notify",
 		keys = {
@@ -142,7 +135,7 @@ return {
 		},
 		opts = {
 			stages = "static",
-			timeout = 2000,
+			timeout = 3000,
 			max_height = function()
 				return math.floor(vim.o.lines * 0.75)
 			end,
@@ -154,6 +147,7 @@ return {
 			end,
 		},
 	},
+
 	{
 		"NvChad/nvim-colorizer.lua",
 		event = { "BufReadPre", "BufNewFile" },

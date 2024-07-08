@@ -106,6 +106,11 @@ return {
 					error = icons.diagnostics.BoldError,
 				},
 			},
+			actions = {
+				open_file = {
+					quit_on_open = true,
+				},
+			},
 		})
 	end,
 }

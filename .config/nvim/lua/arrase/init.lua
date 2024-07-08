@@ -338,6 +338,7 @@ function M.unique(t)
 
 	return result
 end
+
 ---@generic A: any
 ---@generic B: any
 ---@generic C: any
@@ -386,7 +387,7 @@ M.keymap_factory = function(mode)
 			options = vim.tbl_extend("force", options, { desc = description })
 		end
 
-		vim.juan.set(mode, keybind, custom, options)
+		vim.keymap.set(mode, keybind, custom, options)
 	end
 end
 

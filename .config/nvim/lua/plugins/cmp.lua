@@ -8,6 +8,7 @@ return {
 			{ "hrsh7th/cmp-buffer" }, -- Completion engine for buffer
 			{ "hrsh7th/cmp-cmdline" }, -- Completion engine for CMD
 			{ "hrsh7th/cmp-nvim-lsp-document-symbol" },
+			{ "saadparwaiz1/cmp_luasnip" },
 			{
 				"L3MON4D3/LuaSnip",
 				build = vim.fn.has("win32") ~= 0 and "make install_jsregexp" or nil,
@@ -25,7 +26,7 @@ return {
 					vim.tbl_map(function(type)
 						require("luasnip.loaders.from_" .. type).lazy_load()
 					end, { "vscode", "snipmate" })
-					require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/Snippets/" }) -- friendly-snippets - enable standardized comments snippets
+					-- require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/Snippets/" }) -- friendly-snippets - enable standardized comments snippets
 					require("luasnip").filetype_extend("typescript", { "tsdoc" })
 					require("luasnip").filetype_extend("javascript", { "jsdoc" })
 					require("luasnip").filetype_extend("lua", { "luadoc" })
@@ -186,7 +187,7 @@ return {
 					{ name = "nvim_lsp", priority = 3000 },
 					{ name = "luasnip", priority = 1000 },
 					{ name = "buffer", priority = 500 },
-					-- { name = "codeium", priority = 500 },
+					{ name = "codeium", priority = 500 },
 					{ name = "path", priority = 250 },
 					{ name = "treesitter", priority = 500 },
 					{
@@ -210,7 +211,7 @@ return {
 							path = "{Path}",
 							latex_symbols = "{TeX}",
 							treesitter = "{TS}",
-							-- codeium = "{AI}",
+							codeium = "{AI}",
 						})[entry.source.name]
 						return item
 					end,

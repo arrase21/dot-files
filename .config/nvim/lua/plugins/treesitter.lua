@@ -17,7 +17,6 @@ return {
 				"javascript",
 				"typescript",
 				"tsx",
-				"http",
 				"json",
 				"http",
 			},
