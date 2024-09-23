@@ -94,9 +94,7 @@
 			"default":"󰊠 ",
       "empty":"󰑊"
         },
-        "persistent-workspaces": {
-            "*": 5
-        }
+        "persistent-workspaces": { "*": 9 }
     },
 
   "backlight": {
@@ -126,6 +124,7 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
+    "on-click": "~/.local/bin/rofi-net",
   },
   "battery": {
     "states": {
