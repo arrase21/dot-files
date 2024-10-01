@@ -75,6 +75,7 @@ dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rus
         xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq \
         maim ant-dracula-kvantum-theme-git ant-dracula-theme-git \
         kvantum pacman-contrib xorg-xbacklight brightnessctl\
+        nwg-bar nwg-dock-hyprland nwg-drawer nwg-look nwg-launchers swww\
         imagemagick nerd-fonts-cozette-ttf scientifica-font font-awesome-5)
 
 

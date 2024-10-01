@@ -1,18 +1,8 @@
 * {
-  bg: #0E1F2Fff;
-  bg-alt: #193855;
-
-  fg: #ffc994;
-  fg-alt: #7fcfec;
-
-  text-color: #ffc994;
-
-  borders: #193855;
-  borders-alt: #8dffff;
-  background-color: @bg;
-  
-  border: 0;
-  margin: 0;
-  padding: 0;
-  spacing: 15;
+    main-bg:            #101225B3;
+    main-fg:            #CCD1FFE6;
+    main-br:            #3B4665E6;
+    main-ex:            #1E2644E6;
+    select-bg:          #AADEF080;
+    select-fg:          #294752E6;
 }
