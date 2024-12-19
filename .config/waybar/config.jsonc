@@ -166,8 +166,8 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰆊 switch wallpaper",
-        "on-click": "~/.local/share/bin/swwwallpaper.sh -n",
-        "on-click-right": "~/.local/share/bin/swwwallpaper.sh -p",
+        "on-click": "~/.local/bin/swwwallpaper.sh -n",
+        "on-click-right": "~/.local/bin/swwwallpaper.sh -p",
         "on-click-middle": "sleep 0.1 && swwwallselect.sh",
         "interval" : 86400, // once every day
         "tooltip": true
@@ -177,8 +177,8 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰟡 switch theme",
-        "on-click": "~/.local/share/bin/themeswitch.sh -n",
-        "on-click-right": "~/.local/share/bin/themeswitch.sh -p",
+        "on-click": "~/.local/bin/themeswitch.sh -n",
+        "on-click-right": "~/.local/bin/themeswitch.sh -p",
         "on-click-middle": "sleep 0.1 && themeselect.sh",
         "interval" : 86400, // once every day
         "tooltip": true

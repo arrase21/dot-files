@@ -2,8 +2,8 @@
         "format": "{}",
         "rotate": ${r_deg},
         "exec": "echo ; echo 󰟡 switch theme",
-        "on-click": "~/.local/share/bin/themeswitch.sh -n",
-        "on-click-right": "~/.local/share/bin/themeswitch.sh -p",
+        "on-click": "~/.local/bin/themeswitch.sh -n",
+        "on-click-right": "~/.local/bin/themeswitch.sh -p",
         "on-click-middle": "sleep 0.1 && themeselect.sh",
         "interval" : 86400, // once every day
         "tooltip": true
