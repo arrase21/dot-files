@@ -71,16 +71,16 @@ dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rus
 	      webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm-git tmux ly\
 	      jq polkit-gnome playerctl mpd xclip lsd qtile hyprland swaync waybar hyprpaper slurp grim\
         dunst rofi-wayland jgmenu xprintidle i3lock-color zathura xdotool nodejs \
-        broot fzf mpv neofetch ranger ueberzug xdo perl cava npm\
-        xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq \
-        maim ant-dracula-kvantum-theme-git ant-dracula-theme-git \
-        kvantum pacman-contrib xorg-xbacklight brightnessctl\
+        broot fzf mpv neofetch ranger ueberzug xdo perl cava npm wlogout\
+        xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq\
+        maim ant-dracula-kvantum-theme-git ant-dracula-theme-git swayosd-git\
+        kvantum pacman-contrib xorg-xbacklight brightnessctl nwg-clipman\
         nwg-bar nwg-dock-hyprland nwg-drawer nwg-look nwg-launchers swww\
         imagemagick nerd-fonts-cozette-ttf scientifica-font font-awesome-5)
 
 
 is_installed() {
-  yay -Qi "$1" &> /dev/null
+  paru -Qi "$1" &> /dev/null
   return $?
 }
 
@@ -88,7 +88,7 @@ printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
 for paquete in "${dependencias[@]}"
 do
   if ! is_installed "$paquete"; then
-    sudo yay -S "$paquete" --noconfirm
+    sudo paru -S "$paquete" --noconfirm
     printf "\n"
   else
     printf '%s%s is already installed on your system!%s\n' "${CGR}" "$paquete" "${CNC}"
