@@ -1,3 +1,4 @@
+image=$HOME/.config/hyde/themes/Rosé Pine/wallpapers/dark_purple_kimono.png
 daemonize
 show-failed-attempts
 clock

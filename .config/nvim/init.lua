@@ -1,10 +1,3 @@
---[[
--- The Ultimate SciVim
---]]
-require("configs.options")
-require("configs.keymaps")
-require("configs.autocmds")
-require("configs.lazy")
--- vim.cmd([[colorscheme nightfly]])
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
 vim.cmd([[colorscheme solarized-osaka]])
-require("configs.init")

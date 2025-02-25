@@ -166,8 +166,8 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰆊 switch wallpaper",
-        "on-click": "~/.local/bin/swwwallpaper.sh -n",
-        "on-click-right": "~/.local/bin/swwwallpaper.sh -p",
+        "on-click": "~/.local/swwwallpaper.sh -n",
+        "on-click-right": "~/.local/swwwallpaper.sh -p",
         "on-click-middle": "sleep 0.1 && swwwallselect.sh",
         "interval" : 86400, // once every day
         "tooltip": true
@@ -177,25 +177,22 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰟡 switch theme",
-        "on-click": "~/.local/bin/themeswitch.sh -n",
-        "on-click-right": "~/.local/bin/themeswitch.sh -p",
+        "on-click": "~/.local/themeswitch.sh -n",
+        "on-click-right": "~/.local/themeswitch.sh -p",
         "on-click-middle": "sleep 0.1 && themeselect.sh",
         "interval" : 86400, // once every day
         "tooltip": true
     },
 
-"custom/updates": {
-       "format": "{} {icon}",
-       "return-type": "json",
-       "format-icons": {
-           "has-updates": "󱍷",
-           "updated": "󰂪",
-        "interval": 7200,
-       },
-       "exec-if": "which waybar-module-pacman-updates",
-       "exec": "waybar-module-pacman-updates",
-       "on-click": "wezterm -e update"
-
+    "custom/updates": {
+        "exec": "systemupdate.sh",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+        "interval": 86400, // once every day
+        "tooltip": true,
+        "signal": 20,
     },
     "idle_inhibitor": {
         "format": "{icon}",

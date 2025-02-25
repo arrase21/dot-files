@@ -1,13 +1,10 @@
-"custom/updates": {
-       "format": "{} {icon}",
-       "return-type": "json",
-       "format-icons": {
-           "has-updates": "󱍷",
-           "updated": "󰂪",
-        "interval": 7200,
-       },
-       "exec-if": "which waybar-module-pacman-updates",
-       "exec": "waybar-module-pacman-updates",
-       "on-click": "wezterm -e update"
-
+    "custom/updates": {
+        "exec": "systemupdate.sh",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": ${r_deg},
+        "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+        "interval": 86400, // once every day
+        "tooltip": true,
+        "signal": 20,
     },

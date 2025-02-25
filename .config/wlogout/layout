@@ -1,8 +1,7 @@
 {
-    "label" : "lock",
-    "action" : "$HOME/.config/hypr/scripts/LockScreen.sh",
-    "text" : "Lock",
-    "keybind" : "l"
+    "name": "Lock screen",
+    "exec": "swaylock -C ~/.config/swaylock/config",
+    "icon": "~/.config/hyde/themes/Rosé Pine/wallpapers/dark_purple_kimono.png"
 }
 {
     "label" : "reboot",

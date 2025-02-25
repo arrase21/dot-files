@@ -16,9 +16,9 @@ CNC=$(tput sgr0)
 backup_folder=~/.RiceBackup
 date=$(date +%Y%m%d-%H%M%S)
 
-logo () {
-	local text="${1:?}"
-	echo -en "
+logo() {
+  local text="${1:?}"
+  echo -en "
 	               %%%
 	        %%%%%//%%%%%
 	      %%************%%%
@@ -36,14 +36,14 @@ logo () {
 	          &&//@@@**
 	            ..***
 			  z0mbi3 Dotfiles\n\n"
-    printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
+  printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
 }
 
 ########## ---------- You must not run this as root ---------- ##########
 
 if [ "$(id -u)" = 0 ]; then
-    echo "This script MUST NOT be run as root user."
-    exit 1
+  echo "This script MUST NOT be run as root user."
+  exit 1
 fi
 
 ########## ---------- Welcome ---------- ##########
@@ -52,41 +52,38 @@ logo "Welcome!"
 printf '%s%sThis script will check if you have the necessary dependencies, and if not, it will install them. Then, it will clone the RICE in your HOME directory.\nAfter that, it will create a secure backup of your files, and then copy the new files to your computer.\n\nMy dotfiles DO NOT modify any of your system configurations.\nYou will be prompted for your root password to install missing dependencies and/or to switch to zsh shell if its not your default.\n\nThis script doesnt have the potential power to break your system, it only copies files from my repository to your HOME directory.%s\n\n' "${BLD}" "${CRE}" "${CNC}"
 
 while true; do
-	read -rp " Do you wish to continue? [y/N]: " yn
-		case $yn in
-			[Yy]* ) break;;
-			[Nn]* ) exit;;
-			* ) printf " Error: just write 'y' or 'n'\n\n";;
-		esac
-    done
+  read -rp " Do you wish to continue? [y/N]: " yn
+  case $yn in
+  [Yy]*) break ;;
+  [Nn]*) exit ;;
+  *) printf " Error: just write 'y' or 'n'\n\n" ;;
+  esac
+done
 clear
 
 ########## ---------- Install packages ---------- ##########
 
 logo "Installing needed packages.."
 
-
 dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rustup polybar opera\
         ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-	      webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm-git tmux ly\
-	      jq polkit-gnome playerctl mpd xclip lsd qtile hyprland swaync waybar hyprpaper slurp grim\
+	      webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm-git tmux\
+	      jq polkit-gnome playerctl mpd xclip lsd qtile hyprland swaync waybar hyprpaper \
         dunst rofi-wayland jgmenu xprintidle i3lock-color zathura xdotool nodejs \
         broot fzf mpv neofetch ranger ueberzug xdo perl cava npm wlogout\
         xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq\
-        maim ant-dracula-kvantum-theme-git ant-dracula-theme-git swayosd-git\
+        maim swayosd-git imagemagick swappy yazi slurp grim\
         kvantum pacman-contrib xorg-xbacklight brightnessctl nwg-clipman\
-        nwg-bar nwg-dock-hyprland nwg-drawer nwg-look nwg-launchers swww\
-        imagemagick nerd-fonts-cozette-ttf scientifica-font font-awesome-5)
-
+        nwg-bar nwg-dock-hyprland nwg-drawer nwg-look nwg-launchers swww \
+        )
 
 is_installed() {
-  paru -Qi "$1" &> /dev/null
+  paru -Qi "$1" &>/dev/null
   return $?
 }
 
 printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
-for paquete in "${dependencias[@]}"
-do
+for paquete in "${dependencias[@]}"; do
   if ! is_installed "$paquete"; then
     sudo paru -S "$paquete" --noconfirm
     printf "\n"
@@ -102,10 +99,10 @@ clear
 
 logo "Preparing Folders"
 if [ ! -e $HOME/.config/user-dirs.dirs ]; then
-	xdg-user-dirs-update
-	echo "Creating xdg-user-dirs"
+  xdg-user-dirs-update
+  echo "Creating xdg-user-dirs"
 else
-	echo "user-dirs.dirs already exists"
+  echo "user-dirs.dirs already exists"
 fi
 sleep 2
 clear
@@ -114,6 +111,9 @@ clear
 
 logo "Downloading dotfiles"
 printf "Cloning rice from https://github.com/arrase/dot-files\n"
+cd
+mkdir repos
+mkdir -p $HOME/.local/share/fonts
 cd
 cd repos
 git clone --depth=1 https://github.com/arrase21/dot-files
@@ -139,7 +139,6 @@ for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ra
   fi
 done
 
-
 printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 5
 
@@ -148,99 +147,60 @@ sleep 5
 logo "Installing dotfiles.."
 printf "Copying files to respective directories..\n"
 
-
 for archivos in ~/repos/dot-files/.config/*; do
   cp -R "${archivos}" ~/.config/
   if [ $? -eq 0 ]; then
-	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+    sleep 1
   else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+    sleep 1
   fi
 done
 
-for archivos in ~/repos/dot-files/.bin; do
-  cp -R "${archivos}" ~/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
-
-for archivos in ~/repos/dot-files/.local/bin/; do
+for archivos in ~/repos/dot-files/.local/; do
   cp -R "${archivos}" ~/.local/
   if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+    sleep 1
   else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
-
-
-for archivos in ~/repos/dot-files/.bscripts; do
-  cp -R "${archivos}" ~/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
-
-for archivos in ~/repos/dot-files/rice_assets; do
-  cp -R "${archivos}" ~/.config/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+    sleep 1
   fi
 done
 
 for archivos in ~/repos/dot-files/.profile; do
   cp -R "${archivos}" ~/
   if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+    sleep 1
   else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+    sleep 1
   fi
 done
 
 for archivos in ~/repos/dot-files/.Xresources; do
-cp -R "${archivos}" ~/
-if [ $? -eq 0 ]; then
-printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-sleep 1
-else
-printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-sleep 1
-fi
+  cp -R "${archivos}" ~/
+  if [ $? -eq 0 ]; then
+    printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+    sleep 1
+  else
+    printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+    sleep 1
+  fi
 done
-
-
 
 for archivos in ~/repos/dot-files/fonts/*; do
   cp -R "${archivos}" ~/.local/share/fonts/
   if [ $? -eq 0 ]; then
-	printf "%s%s%s copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+    sleep 1
   else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
+    printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+    sleep 1
   fi
 done
-
-
 
 sleep 3
 
@@ -249,33 +209,33 @@ sleep 3
 logo "installing Paru & Eww"
 
 if ! command -v paru >/dev/null 2>&1; then
-	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd
-	git clone https://aur.archlinux.org/paru-bin.git
-	cd paru-bin
-	makepkg -si --noconfirm
-	cd
+  printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
+  cd
+  git clone https://aur.archlinux.org/paru-bin.git
+  cd paru-bin
+  makepkg -si --noconfirm
+  cd
 else
-	printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+  printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 if ! command -v eww >/dev/null 2>&1; then
-	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	curl -sS https://github.com/elkowar.gpg | gpg --import -i -
-	curl -sS https://github.com/web-flow.gpg | gpg --import -i -
-	paru -S eww-x11 --skipreview --noconfirm
-	rm -rf {paru-bin,.cargo,.rustup}
-	rm -rf $HOME/.cache/paru/clone/eww
+  printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
+  curl -sS https://github.com/elkowar.gpg | gpg --import -i -
+  curl -sS https://github.com/web-flow.gpg | gpg --import -i -
+  paru -S eww-x11 --skipreview --noconfirm
+  rm -rf {paru-bin,.cargo,.rustup}
+  rm -rf $HOME/.cache/paru/clone/eww
 else
-	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+  printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 ## Intalling tdrop for scratchpads
 if ! command -v tdrop >/dev/null 2>&1; then
-	printf "\n%s%sInstalling tdrop, this must be fast!.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	paru -S tdrop-git --skipreview --noconfirm
+  printf "\n%s%sInstalling tdrop, this must be fast!.%s\n" "${BLD}" "${CBL}" "${CNC}"
+  paru -S tdrop-git --skipreview --noconfirm
 else
-	printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+  printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 ########## ---------- Enabling MPD service ---------- ##########

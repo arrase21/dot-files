@@ -10,10 +10,10 @@ export MICRO_TRUECOLOR=1
 export EDITOR=/usr/bin/micro
 
 #browser
-export BROWSER=firedragon
+export BROWSER=zen-browser
 #terminal
 export TERM=foot
 #mail
 export MAIL=thunderbird
 
-# check /usr/local/bin/hyprstart 
+# check /usr/local/bin/hyprstart

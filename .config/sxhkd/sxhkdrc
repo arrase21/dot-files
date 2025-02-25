@@ -11,7 +11,7 @@
 #_______________________Atajos Basicos__________________________________
 
 # close and kill
-alt + {_,shift + }q
+super + {_,shift + }q
 	bspc node -{c,k}
 
 #Terminal
@@ -42,7 +42,7 @@ super + d
 
 # alt + F1
 #   ~/.bscripts/rofi.sh drun
-alt + F1
+super + F1
   sh ~/.config/rofi/alternative/bin/launcher
 
 super + {x,s}
@@ -52,7 +52,7 @@ super + Tab
   ~/.bscripts/rofi.sh window
 #
 super + shift + w
-  {nitrogen --set-zoom-fill --save --random Pictures/Wallpapers}
+  {nitrogen --set-zoom-fill --save --random Pictures/wallpapers}
 
 
 control+alt+c
@@ -82,18 +82,18 @@ alt + w
 alt + f
     thunar
 
-alt + t
+super + t
     telegram-desktop
 
 # Pavucontrol
-alt + v
+super + v
 		pavucontrol
         
 # Nitrogen/walls
-alt + n
+super + n
 		nitrogen
 # Htop
-alt + h
+super + h
 		st -e htop
 #____________________Manejos de ventanas_________________________________
 # Cursor de ventanas
@@ -105,7 +105,7 @@ super+e
 	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& bspc node first_ancestor --balance 
 
 super+shift+{Left,Down,Up,Right}
-	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& ~/.bscripts/bsmove.sh {west,south,north,east}
+	play -v 0.4 ~/.config/rice_assets/Sounds/tile.wav& ~/.local/bin/bsmove.sh {west,south,north,east}
 
 # Fullscreen
 super + f
@@ -116,7 +116,7 @@ super + f
 # 		bspc {node,desktop} -f last
 
 alt + tab
-  ~/.bscripts/wpm_reports.sh select -1
+  ~/.local/bin/wpm_reports.sh select -1
 
 # Enviar ventanas a otra area de trabajo
 super + {_,alt + }{1-9,0}
@@ -126,7 +126,7 @@ super + {_,alt + }{1-9,0}
 # alt + {1-9,0}
 # 	bspc desktop -f '^{1-9,10}'
 alt + {1-9, 0}
-  ~/.bscripts/wpm_reports.sh jump {0,1-9}
+  ~/.local/bin/wpm_reports.sh jump {0,1-9}
 
 
 #________________________move/resize____________________________________
@@ -152,13 +152,13 @@ super + ctrl + {1-9}
 # 		amixer -D pulse set Master 1+ toggle
 
 XF86AudioRaiseVolume
-  ~/.bscripts/volume.sh up
+  ~/.local/bin/volume.sh up
 
 XF86AudioLowerVolume
-  ~/.bscripts/volume.sh down
+  ~/.local/bin/volume.sh down
 
 XF86AudioMute
-  ~/.bscripts/volume.sh mute
+  ~/.local/bin/volume.sh mute
 
 # Play/Pause
 shift + F7
@@ -172,10 +172,10 @@ shift + F8
 
 #Brightness control
 XF86MonBrightnessUp
-	~/.bscripts/brightness.sh up
+	~/.local/bin/brightness.sh up
 
 XF86MonBrightnessDown
-	~/.bscripts/brightness.sh down
+	~/.local/bin/brightness.sh down
 
 
 #__________________________Scripts______________________________________
@@ -184,13 +184,13 @@ XF86MonBrightnessDown
 # 		{maim -m 1 D-shot-captura-pantalla-"$(date '+%y%m%d-%H%M-%S').png",$HOME/.local/bin/scripts/menucaptura}
 # Menu de grabacion de video
 super + Print
-		$HOME/.local/bin/scripts/menugrabacion
+	$HOME/.local/bin/scripts/menugrabacion
 
 # Screenshot
 Print
-  ~/.bscripts/ss.sh
+  ~/.local/bin/ss.sh
 alt + Print
-  sleep 3 && ~/.bscripts/ss.sh
+  sleep 3 && ~/.local/bin/ss.sh
 
 # Monitor
 super + shift + m
