@@ -6,7 +6,7 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    "height": 15,
+    "height": 32,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -17,7 +17,7 @@
 
 	"modules-left": ["custom/padd","custom/l_end","custom/icon","hyprland/workspaces","hyprland/window","custom/r_end","","custom/padd"],
 	"modules-center": ["custom/padd","","custom/l_end","clock","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/l_end","backlight","pulseaudio","network","custom/r_end","custom/l_endcustom/keybindhintcustom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","custom/wallchange","custom/theme","custom/updates","custom/r_end","custom/l_end","idle_inhibitor","custom/cliphist","custom/notification","custom/power","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/l_end","backlight","pulseaudio","network","custom/r_end","custom/l_endcustom/keybindhintcustom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","custom/wallchange","custom/theme","custom/updates","custom/r_end","custom/l_end","cidle_inhibitor","ustom/cliphist","custom/notification","custom/power","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -143,7 +143,7 @@
     },
 
     "tray": {
-        "icon-size": 12,
+        "icon-size": 19,
         "rotate": 0,
         "spacing": 5
     },
@@ -194,15 +194,6 @@
         "tooltip": true,
         "signal": 20,
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "rotate": 0,
-        "format-icons": {
-            "activated": "󰈈 ",
-            "deactivated": "󰈉 "
-        }
-    },
-
     "custom/cliphist": {
         "format": "{}",
         "rotate": 0,

@@ -68,15 +68,21 @@ logo "Installing needed packages.."
 dependencias=(sxhkd bspwm alacritty fish neovim stalonetray telegram-desktop rustup polybar opera\
         ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
 	      webp-pixbuf-loader pamixer libwebp ncmpcpp mpc feh wezterm-git tmux\
-	      jq polkit-gnome playerctl mpd xclip lsd qtile hyprland swaync waybar hyprpaper \
-        dunst rofi-wayland jgmenu xprintidle i3lock-color zathura xdotool nodejs \
-        broot fzf mpv neofetch ranger ueberzug xdo perl cava npm wlogout\
+	      polkit-gnome mpd xclip lsd qtile hyprland swaync waybar hyprpaper \
+        dunst jgmenu xprintidle i3lock-color zathura xdotool nodejs \
+        broot fzf ranger ueberzug xdo perl npm wlogout\
         xbanish xss-lock pavucontrol nitrogen flameshot exa bat copyq\
         maim swayosd-git imagemagick swappy yazi slurp grim\
-        kvantum pacman-contrib xorg-xbacklight brightnessctl nwg-clipman\
+        kvantum pacman-contrib xorg-xbacklight nwg-clipman\
         nwg-bar nwg-dock-hyprland nwg-drawer nwg-look nwg-launchers swww \
-        )
-
+        bc cliphist curl gvfs gvfs-mtp hyprpolkitagent imagemagick inxi jq\
+        kitty kvantum nano network-manager-applet pamixer pavucontrol pipewire-alsa\
+        playerctl python-requests python-pyquery qt5ct qt6ct qt6-svg rofi-wayland  unzip\
+        wallust wget wl-clipboard xdg-user-dirs xdg-utils yad\
+        brightnessctl btop cava loupe fastfetch gnome-system-monitor mousepad mpv mpv-mpris nvtop nwg-look\
+        nwg-displays pacman-contrib qalculate-gtk yt-dlp\
+)
+)
 is_installed() {
   paru -Qi "$1" &>/dev/null
   return $?
