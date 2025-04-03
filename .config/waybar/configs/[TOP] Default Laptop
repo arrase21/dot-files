@@ -50,7 +50,7 @@
 	"group/laptop",
 	"custom/separator#dot-line",
 	"group/mobo_drawer",
-	"custom/separator#dot-line",  
+	"custom/separator#line",  
   "custom/updates",
 	"custom/separator#dot-line",
 	"group/audio",

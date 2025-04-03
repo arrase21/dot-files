@@ -44,12 +44,13 @@
 	], 
 
 "modules-right": [
-	"network#speed",
-	"group/connections",
 	"custom/separator#line",
 	"tray",
 	"mpris", 
 	"group/audio",
+	"custom/separator#line",
+  "custom/blue",
+  "custom/updates",
 	"custom/separator#dot-line",
 	"group/status",
 	],

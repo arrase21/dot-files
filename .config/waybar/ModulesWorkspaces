@@ -67,13 +67,14 @@
 	},
 },
 // Kanji / Japanese style
+
 "hyprland/workspaces#kanji": {
 	"disable-scroll": true,
 	"show-special": false,
 	"all-outputs": true,
-	"format": "{icon}",
-    "persistent-workspaces": {
-      "*": 5
+	"format": "{icon} {windows}",
+	"persistent-workspaces": {
+		"*": 5
 	},
 	"format-icons": {
 		"1": "一",
@@ -85,9 +86,53 @@
 		"7": "七",
 		"8": "八",
 		"9": "九",
-		"10": "十",
+		"10": "十"
+	},
+	"format-window-separator": " ",
+	"window-rewrite-default": " ",
+	"window-rewrite": {
+		"title<.*youtube.*>": " ",
+		"title<.*amazon.*>": " ",
+		"title<.*reddit.*>": " ",
+		"title<.*Picture-in-Picture.*>": " ",
+		"class<firefox|org.mozilla.firefox|zen-browser|vivaldi|librewolf|floorp|mercury-browser|[Cc]achy-browser>": " ",
+		"class<kitty|konsole>": " ",
+		"class<wezterm|terminal>": " ",
+		"class<kitty-dropterm>": " ",
+		"class<wezterm-dropterm>": " ",
+		"class<Chromium|Thorium>": " ",
+		"class<docker|Desktop>": "󰡨",
+		"class<org.telegram.desktop|io.github.tdesktop_x64.TDesktop>": " ",
+		"class<[Ss]potify>": " ",
+		"class<VSCode|nvim|neovim|vim|code-url-handler|code-oss|codium|codium-url-handler|VSCodium>": "󰨞 ",
+		"class<Alacritty|wezterm|konsole>": " ",
+		"class<thunar>": "󰝰 ",
+		"class<[Tt]hunderbird|[Tt]hunderbird-esr>": " ",
+		"class<eu.betterbird.Betterbird>": " ",
+		"class<discord|[Ww]ebcord|Vesktop>": " ",
+		"class<subl>": "󰅳 ",
+		"class<mpv>": " ",
+		"class<celluloid|Zoom>": " ",
+		"class<Cider>": "󰎆 ",
+		"class<virt-manager>": " ",
+		"class<.virt-manager-wrapped>": " ",
+		"class<codeblocks>": "󰅩 ",
+		"class<mousepad>": " ",
+		"class<libreoffice-writer>": " ",
+		"class<libreoffice-startcenter>": "󰏆 ",
+		"class<com.obsproject.Studio>": " ",
+		"class<polkit-gnome-authentication-agent-1>": "󰒃 ",
+		"class<nwg-look>": " ",
+		"class<zen>": "󰰷 ", 
+		"class<waterfox|waterfox-bin>": " ",
+		"class<microsoft-edge>": " ",
+		"class<vlc>": "󰕼 ",
+		"class<steam>": " "
 	}
 },
+
+
+
 // for Camilla or Spanish
 "hyprland/workspaces#cam": {
 	"active-only":false,

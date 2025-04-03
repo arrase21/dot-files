@@ -212,6 +212,15 @@
   "signal": 20,
   },
 
+"custom/blue": { 
+  "exec": "systemupdate.sh",
+  "return-type": "json",
+  "format": " ",
+  "on-click": "hyprshade on blue-light-filter",
+	"on-click-right": "hyprshade off",
+  "tooltip": true,
+  "signal": 20,
+  },
 
 
 }
