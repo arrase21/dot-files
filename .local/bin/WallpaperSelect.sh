@@ -3,7 +3,7 @@
 # This script for selecting wallpapers (SUPER W)
 
 # WALLPAPERS PATH
-terminal=kitty
+terminal=wezterm
 wallDIR="$HOME/Pictures/wallpapers"
 SCRIPTSDIR="$HOME/.local/bin/"
 wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
