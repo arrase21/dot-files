@@ -131,7 +131,7 @@
 	"on-scroll-down": "$HOME/.local/bin/Volume.sh --dec",
 	"smooth-scrolling-threshold": 1,
 },
-    
+
 "custom/power": {
 	"format": " ⏻ ",
 	"on-click": "$HOME/.local/bin/Wlogout.sh",
@@ -202,7 +202,8 @@
 	"interval": "once",
 	"tooltip": false
 },
-"custom/updates": { 
+"custom/updates": {
+  "format": " 󰁈 ",
   "exec": "systemupdate.sh",
   "return-type": "json",
   "format": "{}",
@@ -212,8 +213,7 @@
   "signal": 20,
   },
 
-"custom/blue": { 
-  "exec": "systemupdate.sh",
+"custom/blue": {
   "return-type": "json",
   "format": " ",
   "on-click": "hyprshade on blue-light-filter",
@@ -221,6 +221,4 @@
   "tooltip": true,
   "signal": 20,
   },
-
-
 }

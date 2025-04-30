@@ -46,16 +46,14 @@
 
 "modules-right": [
 	"tray",
+	"network#speed",
 	"custom/separator#dot-line",
 	"group/laptop",
 	"custom/separator#dot-line",
 	"group/mobo_drawer",
 	"custom/separator#line",  
-  "custom/updates",
-	"custom/separator#dot-line",
 	"group/audio",
 	"custom/separator#dot-line", 
 	"group/status",
 	],
-
 }

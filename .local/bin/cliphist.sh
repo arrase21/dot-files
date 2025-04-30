@@ -7,38 +7,28 @@ roconf="${confDir}/rofi/clipboard.rasi"
 favoritesFile="${HOME}/.cliphist_favorites"
 
 # Set rofi scaling
-[[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
+[[ "${rofiScale}" =~ ^[1-9]+$ ]] || rofiScale=10
 r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiScale}\";}"
 wind_border=$((hypr_border * 3 / 2))
-elem_border=$([ $hypr_border -eq 0 ] && echo "5" || echo $hypr_border)
+elem_border=$([ $hypr_border -eq 2 ] && echo "10" || echo $hypr_border)
 
-# Evaluate spawn position
-readarray -t curPos < <(hyprctl cursorpos -j | jq -r '.x,.y')
-readarray -t monRes < <(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width,.height,.scale,.x,.y')
-readarray -t offRes < <(hyprctl -j monitors | jq -r '.[] | select(.focused==true).reserved | map(tostring) | join("\n")')
-monRes[2]="$(echo "${monRes[2]}" | sed "s/\.//")"
-monRes[0]="$(( ${monRes[0]} * 100 / ${monRes[2]} ))"
-monRes[1]="$(( ${monRes[1]} * 100 / ${monRes[2]} ))"
-curPos[0]="$(( ${curPos[0]} - ${monRes[3]} ))"
-curPos[1]="$(( ${curPos[1]} - ${monRes[4]} ))"
 
-if [ "${curPos[0]}" -ge "$((${monRes[0]} / 2))" ] ; then
-    x_pos="east"
-    x_off="-$(( ${monRes[0]} - ${curPos[0]} - ${offRes[2]} ))"
-else
-    x_pos="west"
-    x_off="$(( ${curPos[0]} - ${offRes[0]} ))"
-fi
+# Obtener la resolución del monitor
+readarray -t monRes < <(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width,.height,.x,.y')
 
-if [ "${curPos[1]}" -ge "$((${monRes[1]} / 2))" ] ; then
-    y_pos="south"
-    y_off="-$(( ${monRes[1]} - ${curPos[1]} - ${offRes[3]} ))"
-else
-    y_pos="north"
-    y_off="$(( ${curPos[1]} - ${offRes[1]} ))"
-fi
+# Calcular el centro de la pantalla
+center_x=$(( ${monRes[0]} / 2 ))
+center_y=$(( ${monRes[1]} / 2 ))
 
-r_override="window{location:${x_pos} ${y_pos};anchor:${x_pos} ${y_pos};x-offset:${x_off}px;y-offset:${y_off}px;border:${hypr_width}px;border-radius:${wind_border}px;} wallbox{border-radius:${elem_border}px;} element{border-radius:${elem_border}px;}"
+# Establecer los valores de desplazamiento
+x_off=$(( (monRes[0] - 500) / 2 ))  # 500 es el ancho estimado de la ventana de rofi
+y_off=$(( (monRes[1] - 300) / 2 ))  # 300 es la altura estimada de la ventana de rofi
+
+# Configuración para centrar rofi
+r_override="window {location: ${x_off}px ${y_off}px; x-offset: 0; y-offset: 0; border: ${hypr_width}px; border-radius: ${wind_border}px;} wallbox {border-radius: ${elem_border}px;} element {border-radius: ${elem_border}px;}"
+
+# Ahora en lugar de los valores dinámicos, usamos esta configuración de rofi con el r_override
+
 
 # Show main menu if no arguments are passed
 if [ $# -eq 0 ]; then

@@ -60,4 +60,5 @@ rm "$temp_screenshot"
 
 if [ -f "${save_dir}/${save_file}" ]; then
   notify-send -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
+  $HOME/.local/bin/Sounds.sh --screenshot
 fi

@@ -1,8 +1,8 @@
 local function borderMenu(hl_name)
   return {
-    { "", "VimBlue" },
+    { "", "Blue" },
     { "─", hl_name },
-    { "▼", "VimOrange" },
+    { "▼", "Orange" },
     { "│", hl_name },
     { "╯", hl_name },
     { "─", hl_name },

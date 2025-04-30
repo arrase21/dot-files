@@ -1,15 +1,13 @@
--- return {
---   {
---     "folke/tokyonight.nvim",
---     event = { "VeryLazy" },
---     priority = 1000,
---     opts = {
---       style = "moon",
---     },
---   },
--- }
-
 return {
+  {
+    "folke/tokyonight.nvim",
+    event = { "VeryLazy" },
+    priority = 1000,
+    opts = {
+      transparent = true,
+    },
+  },
+
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,

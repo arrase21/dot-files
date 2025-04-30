@@ -159,6 +159,8 @@ window#waybar.empty #window {
 #custom-hypridle,
 #custom-menu,
 #custom-playerctl,
+#custom-theme,
+#custom-wallchange,
 #custom-power_vertical,
 #custom-power,
 #custom-settings,
@@ -170,7 +172,7 @@ window#waybar.empty #window {
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight,
-#custom-weather.default, 
+#custom-weather.default,
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
@@ -256,7 +258,7 @@ window#waybar.empty #window {
     border-radius: 3px 5px 3px 5px;
     padding: 1px 10px 0px 10px;
     margin: 3px 0px 3px 0px;
-    border:3px solid @bordercolor;   
+    border:3px solid @bordercolor;
 }
 
 #backlight {
