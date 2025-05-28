@@ -8,8 +8,8 @@ rofiConf="${confDir}/rofi/selector.rasi"
 rofiStyleDir="${confDir}/rofi/themes"
 rofiAssetDir="${confDir}/rofi/assets"
 
-#// set rofi scaling
-
+##// set rofi scaling
+#
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
 r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiScale}\";}"
 elem_border=$((hypr_border * 5))
@@ -28,7 +28,7 @@ max_avail=$((mon_x_res - (4 * rofiScale)))
 col_count=$((max_avail / elm_width))
 [[ "${col_count}" -gt 5 ]] && col_count=5
 r_override="window{width:100%;} listview{columns:${col_count};} element{orientation:vertical;border-radius:${elem_border}px;} element-icon{border-radius:${icon_border}px;size:20em;} element-text{enabled:false;}"
-
+#
 #// launch rofi menu
 
 RofiSel=$(ls ${rofiStyleDir}/style_*.rasi | awk -F '[_.]' '{print $((NF - 1))}' | while read styleNum; do

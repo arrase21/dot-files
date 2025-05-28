@@ -137,8 +137,6 @@ window#waybar.empty #window {
 #tray,
 #window,
 #wireplumber,
-#custom-theme,
-#custom-wallchange,
 #workspaces,
 #custom-backlight,
 #custom-browser,
@@ -156,6 +154,8 @@ window#waybar.empty #window {
 #custom-playerctl,
 #custom-power_vertical,
 #custom-power,
+#custom-quit,
+#custom-reboot,
 #custom-settings,
 #custom-spotify,
 #custom-swaync,
@@ -165,7 +165,7 @@ window#waybar.empty #window {
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight,
-#custom-weather.default,
+#custom-weather.default, 
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
@@ -260,7 +260,7 @@ window#waybar.empty #window {
     padding: 1px 10px 0px 10px;
     margin: 3px 0px 3px 0px;
     opacity:0.8;
-    border:3px solid @bordercolor;
+    border:3px solid @bordercolor;   
 }
 
 #backlight {

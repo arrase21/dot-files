@@ -1,0 +1,245 @@
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun,filebrowser,run,recursivebrowser";
+    show-icons:                 true;
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
+    display-recursivebrowser:   "󰈞";
+    display-emoji:              "󰞅";
+    display-window:             "";
+    display-calc:               "";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
+}
+
+// @import "fonts.rasi"
+@import "~/.config/rofi/wallust/colors-rofi.rasi"
+/*****----- Global Properties -----*****/
+* {
+    background-color : @color1;
+    foreground-colour: @color15;
+    outline-variant: @color0;
+    outline: @color1;
+    on-surface-variant: @color7;
+    on-surface: @color11;
+    primary-container: @color9;
+    on-primary: @color10;
+    border-colour: @color8;
+    element-bg:@color0;
+    surface-container: @color0;
+    outline: @color9;
+    primary: @selected-active-foreground;
+    on-primary-container: @selected-active-foreground;
+  }
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    west;
+    anchor:                      west;
+    fullscreen:                  false;
+    width:                       400px;
+    height:                      98.7%;
+    x-offset:                    0px;
+    y-offset:                    0px;
+    enabled:                     true;
+    margin:                      0px 0px 0px 8px;
+    border-radius:               18px;
+    padding:                     2px;
+    border:                      0px solid 0px;
+    border-color:                @outline-variant;
+    cursor:                      "default";
+    background-color:            @background-color;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     8px;
+    margin:                      0px;
+    padding:                     16px;
+    border:                      0px;
+    border-radius:               0px;
+    border-color:                @outline;
+    children:                    [ "inputbar", "message", "listview", "mode-switcher" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     20px;
+    margin:                      0px 0px 8px 0px;
+    padding:                     12px;
+    border-radius:               25px;
+    border-color:                @outline;
+    background-color:            @background-color;
+    text-color:                  @foreground-colour;
+    children:                    ["entry","prompt"];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    margin: 			 0 4px;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "::";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Type to search";
+    opacity:                     0.3;
+    placeholder-color:           @on-surface-variant;
+}
+num-filtered-rows {
+    enabled:                     true;
+    expand:                      false;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+textbox-num-sep {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "/";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+num-rows {
+    enabled:                     true;
+    expand:                      false;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+case-indicator {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     6px;
+    margin:                      0px;
+    padding:                     4px 0px;
+    border:                      0px;
+    background-color:            transparent;
+}
+
+scrollbar {
+    handle-width:                5px ;
+    handle-color:                @on-surface;
+    border-radius:               12px;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     18px;
+    margin:                      2px;
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               12px;
+    background-color:            @outline;
+    text-color:                  @on-surface;
+    cursor:                      pointer;
+    orientation:                 horizontal;
+}
+
+element.selected {
+    background-color:            @border-colour;
+    text-color:                  @on-primary;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        38px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled:                     true;
+    spacing:                     8px;
+    margin:                      8px 0px 0px 0px;
+    padding:                     5px;
+    border:                      0.3px solid;
+    border-radius:               25px;
+    border-color:                @outline;
+    background-color:            @element-bg;
+}
+
+button {
+    padding:                     7px 12px;
+    border-radius:               25px;
+    background-color:            transparent;
+    text-color:                  @on-surface-variant;
+    cursor:                      pointer;
+}
+button selected {
+    background-color:            @primary;
+    text-color:                  @on-primary;
+}
+
+/*****----- Message -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     8px 8px;
+    border:                      1px solid;
+    border-radius:               8px;
+    border-color:                @outline;
+    background-color:            @surface-container;
+    text-color:                  @on-surface;
+}
+textbox {
+    padding:                     8px;
+    border:                      0px solid;
+    border-radius:               4px;
+    border-color:                @outline;
+    background-color:            @surface-container;
+    text-color:                  @on-surface;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
+    placeholder-color:           @on-surface;
+    blink:                       true;
+    markup:                      true;
+}
+error-message {
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @border-colour;
+    background-color:            @background-color;
+    text-color:                  @foreground-colour;
+}
+

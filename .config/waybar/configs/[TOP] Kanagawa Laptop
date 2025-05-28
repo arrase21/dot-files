@@ -1,0 +1,74 @@
+
+{
+  "include": [
+    "$HOME/.config/waybar/Modules",
+    "$HOME/.config/waybar/ModulesWorkspaces",
+    "$HOME/.config/waybar/ModulesCustom",
+    "$HOME/.config/waybar/ModulesGroups",
+    "$HOME/.config/waybar/UserModules"
+  ],
+  "layer": "top",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "top",
+  "spacing": 3,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-top": 3,
+  "margin-left": 8,
+  "margin-right": 8,
+
+  "modules-left": [
+    "group/app_drawer",
+    "custom/separator#dot-line",
+    "custom/separator#blank",
+    "custom/weather"
+  ],
+
+  "modules-center": [
+    "group/notify",
+    "custom/cava_mviz",
+    "custom/separator#dot-line",
+    "clock",
+    "custom/separator#line",
+    "river/tags",
+    "custom/separator#dot-line",
+    "idle_inhibitor",
+    "custom/hint"
+  ],
+
+  "modules-right": [
+    "tray",
+    "group/audio",
+    "custom/separator#dot-line",
+    "group/status"
+  ],
+
+ "river/tags": {
+  "hide-vacant": true,
+    "set-tags": [
+    1,
+    2,
+    3,
+    4,
+    5,
+	  6,
+	  7,
+    8,
+    9,
+    0,
+    ],
+	"tag-labels":[
+		"㆒",
+		"二",
+		"三",
+		"四",
+		"五",
+		"六",
+		"七",
+		"八",
+		"九",
+		"十",
+	]
+
+},}

@@ -2,36 +2,50 @@
 
 IFS=$'\n\t'
 
-# Define directories and variables
-rofi_theme_dir="$HOME/.config/rofi/themes"
+# === Variables ===
+scrDir="$(dirname "$(realpath "$0")")"
+source "${scrDir}/globalcontrol.sh"
+rofi_theme_dir="${confDir}/rofi/themes"
 rofi_config_file="$HOME/.config/rofi/config.rasi"
+rofiConf="${confDir}/rofi/selector.rasi"
+rofiAssetDir="${confDir}/rofi/assets"
 SED=$(which sed)
-iDIR="$HOME/.config/swaync/images"
-rofi_theme="$HOME/.config/rofi/config-rofi-theme.rasi"
 
-# Function to display menu options
-menu() {
-  options=()
-  while IFS= read -r file; do
-    options+=("$file")
-  done < <(find -L "$rofi_theme_dir" -maxdepth 1 -type f -exec basename {} \; | sort -V)
+[[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
+r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiScale}\";}"
+elem_border=$((hypr_border * 5))
+icon_border=$((elem_border - 5))
 
-  printf '%s\n' "${options[@]}"
-}
+# === Monitor scale ===
+mon_x_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
+mon_scale=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .scale' | sed "s/\.//")
+mon_x_res=$((mon_x_res * 100 / mon_scale))
 
-# Function to add or update theme in the config.rasi
-add_theme_to_config() {
-  local theme_name="$1"
-  local theme_path="$rofi_theme_dir/$theme_name"
+elm_width=$(((20 + 12 + 16) * rofiScale))
+max_avail=$((mon_x_res - (4 * rofiScale)))
+col_count=$((max_avail / elm_width))
+[[ "${col_count}" -gt 5 ]] && col_count=5
 
-  # if config in $HOME to write as $HOME
+r_override="window{width:100%;} listview{columns:${col_count};} element{orientation:vertical;border-radius:${elem_border}px;} element-icon{border-radius:${icon_border}px;size:20em;} element-text{enabled:false;}"
+
+# === Mostrar menú con íconos ===
+RofiSel=$(ls "${rofi_theme_dir}"/style_*.rasi 2>/dev/null | awk -F '[_.]' '{print $((NF - 1))}' | while read styleNum; do
+  echo -en "${styleNum}\x00icon\x1f${rofiAssetDir}/style_${styleNum}.png\n"
+done | sort -n | rofi -dmenu -theme-str "${r_override}" -config "${rofiConf}" -select "${rofiStyle}")
+
+# === Aplicar tema seleccionado ===
+if [[ -n "${RofiSel}" ]]; then
+  theme_name="style_${RofiSel}.rasi"
+  theme_path="${rofi_theme_dir}/${theme_name}"
+
+  # Convertir ruta a ~ si es necesario
   if [[ "$theme_path" == $HOME/* ]]; then
     theme_path_with_tilde="~${theme_path#$HOME}"
   else
     theme_path_with_tilde="$theme_path"
   fi
 
-  # If no @theme is in the file, add it
+  # Añadir o actualizar línea @theme
   if ! grep -q '^\s*@theme' "$rofi_config_file"; then
     echo -e "\n\n@theme \"$theme_path_with_tilde\"" >>"$rofi_config_file"
     echo "Added @theme \"$theme_path_with_tilde\" to $rofi_config_file"
@@ -41,32 +55,21 @@ add_theme_to_config() {
     echo "Updated @theme line to $theme_path_with_tilde"
   fi
 
-  # Ensure no more than max # of lines with //@theme lines
-  max_line="9"
-  total_lines=$(grep -c '^\s*//@theme' "$rofi_config_file")
-
+  # Limitar cantidad de //@theme líneas
+  max_line=9
+  total_lines=$(grep -c '^\s*\/\/@theme' "$rofi_config_file")
   if [ "$total_lines" -gt "$max_line" ]; then
     excess=$((total_lines - max_line))
-    # Remove the oldest or the very top //@theme lines
     for i in $(seq 1 "$excess"); do
       $SED -i '0,/^\s*\/\/@theme/ { /^\s*\/\/@theme/ {d; q; }}' "$rofi_config_file"
     done
-    echo "Removed excess //@theme lines"
   fi
-}
 
-# Main function
-main() {
-  choice=$(menu | rofi -dmenu -i -config "$rofi_config_file")
-  if [[ -z "$choice" ]]; then
-    exit 0
-  fi
-  add_theme_to_config "$choice"
-  notify-send -i "$iDIR/ja.png" -u low 'Rofi Theme applied:' "$choice"
-}
+  # Notificación
+  notify-send -a "rofi-theme" -r 91190 -t 2200 -i "${rofiAssetDir}/style_${RofiSel}.png" "Rofi Theme aplicado" "$theme_name"
+fi
 
+# Cerrar Rofi si está abierto
 if pgrep -x "rofi" >/dev/null; then
   pkill rofi
 fi
-
-main

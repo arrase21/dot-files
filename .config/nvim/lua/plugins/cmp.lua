@@ -1,35 +1,8 @@
-local function borderMenu(hl_name)
-  return {
-    { "", "Blue" },
-    { "─", hl_name },
-    { "▼", "Orange" },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
-local function borderDoc(hl_name)
-  return {
-    { "▲", "Orange" },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
 return {
   {
     "saghen/blink.cmp",
     lazy = true,
     event = { "InsertEnter" },
-    -- optional: provides snippets for the snippet source
     dependencies = {
       {
         "saghen/blink.compat",
@@ -40,12 +13,7 @@ return {
       "rafamadriz/friendly-snippets",
     },
 
-    -- use a release tag to download pre-built binaries
     version = "*",
-    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
     opts_extend = {
       "sources.completion.enabled_providers",
       "sources.compat",
@@ -55,10 +23,6 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      -- 'default' for mappings similar to built-in completion
-      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-      -- See the full "keymap" documentation for information on defining your own keymap.
       keymap = {
         ["<CR>"] = { "accept", "fallback" },
         ["<Esc>"] = { "hide", "fallback" },
@@ -88,28 +52,19 @@ return {
       },
 
       appearance = {
-        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- Useful for when your theme doesn't support blink.cmp
-        -- Will be removed in a future release
         use_nvim_cmp_as_default = true,
-        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
         kind_icons = require("extras.icons").kind_icons,
       },
       snippets = {
         preset = "default",
       },
-      -- signature = { enabled = true },
       completion = {
-        -- list = { selection = "manual" },
-        -- list = { selection = "preselect" },
         accept = {
           create_undo_point = true,
           auto_brackets = { enabled = false },
         },
         menu = {
-          border = borderMenu("Ghost"),
           max_height = 10,
           draw = {
             columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
@@ -120,7 +75,6 @@ return {
           window = {
             max_height = 15,
             max_width = 40,
-            border = borderDoc("Ghost"),
           },
           auto_show = true,
           auto_show_delay_ms = 100,
@@ -128,8 +82,6 @@ return {
         },
         ghost_text = { enabled = false },
       },
-      -- Default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         providers = {
@@ -139,35 +91,16 @@ return {
           },
           snippets = {
             name = "[snips]",
-            -- don't show when triggered manually (= length 0), useful
-            -- when manually showing completions to see available JSON keys
             min_keyword_length = 2,
             score_offset = -1,
           },
           path = { name = "[path]", opts = { get_cwd = vim.uv.cwd } },
-          -- copilot = {
-          --   name = "[copilot]",
-          --   module = "blink-cmp-copilot",
-          --   score_offset = 100,
-          --   async = true,
-          -- },
-
-          -- supermaven = { name = "[super]", kind = "Supermaven", module = "supermaven.cmp", score_offset = 100, async = true },
-          -- codecompanion = {
-          --   name = "codecompanion",
-          --   module = "codecompanion.providers.completion.blink",
-          --   enabled = true,
-          -- },
           buffer = {
             name = "[buf]",
-            -- disable being fallback for LSP, but limit its display via
-            -- the other settings
-            -- fallbacks = {},
             max_items = 4,
             min_keyword_length = 4,
             score_offset = -3,
 
-            -- show completions from all buffers used within the last x minutes
             opts = {
               get_bufnrs = function()
                 local mins = 15
@@ -189,7 +122,6 @@ return {
           },
         },
       },
-      -- opts_extend = { "sources.default" }
     },
     config = function(_, opts)
       local enabled = opts.sources.default
@@ -226,7 +158,6 @@ return {
             return items
           end
 
-          -- Unset custom prop to pass blink.cmp validation
           provider.kind = nil
         end
       end

@@ -1,6 +1,3 @@
-/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-
-// ### DEFAULT  - Top (old v4) ### //
 {
 "include": [
   "$HOME/.config/waybar/Modules",
@@ -25,8 +22,8 @@
 	"group/app_drawer",
 	"custom/separator#dot-line",
 	"group/mobo_drawer",
-	"custom/separator#line",
-	"custom/weather",
+	"custom/separator#blank",
+	"group/laptop",
 	],
 
 "modules-center": [
@@ -38,13 +35,9 @@
 	"hyprland/workspaces#kanji",
 	"custom/separator#dot-line",
 	"idle_inhibitor",	
-	"custom/hint",	
 	], 
 
 "modules-right": [
-	"network#speed",
-	"group/connections",
-	"custom/separator#line",
 	"tray",
 	"mpris", 
 	"group/audio",

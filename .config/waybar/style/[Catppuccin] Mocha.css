@@ -1,3 +1,6 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Catppuccin Mocha */
+
 * {
 	font-family: "JetBrainsMono Nerd Font";
 	font-weight: bold;
@@ -16,13 +19,10 @@ window#waybar {
   	border-radius: 10px;
 }
 
-
-tooltip {
-    background: @main-bg;
-    color: @main-fg;
-    border-radius: 7px;
-    border-width: 0px;
+window#waybar.hidden {
+  	opacity: 0.2;
 }
+
 window#waybar.empty,
 window#waybar.empty #window {
     background-color: transparent;
@@ -76,18 +76,18 @@ window#waybar.empty #window {
 
 /* This section can be use if you want to separate waybar modules */
 .modules-left, .modules-center, .modules-right {
-	background: @theme_base_color;
+	background: @theme_base_color; 
  	border: 0.5px solid @overlay0;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	padding-right: 4px;
 	padding-left: 4px;
 	border-radius: 10px;
-}
+} 
 
 .modules-left, .modules-right {
   	border: 1px solid @blue;
-}
+} 
 
 #backlight,
 #backlight-slider,
@@ -119,8 +119,6 @@ window#waybar.empty #window {
 #custom-dot_update,
 #custom-file_manager,
 #custom-keybinds,
-#custom-theme,
-#custom-wallchange,
 #custom-keyboard,
 #custom-light_dark,
 #custom-lock,
@@ -130,6 +128,8 @@ window#waybar.empty #window {
 #custom-playerctl,
 #custom-power_vertical,
 #custom-power,
+#custom-quit,
+#custom-reboot,
 #custom-settings,
 #custom-spotify,
 #custom-swaync,
@@ -139,7 +139,7 @@ window#waybar.empty #window {
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight,
-#custom-weather.default,
+#custom-weather.default, 
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,

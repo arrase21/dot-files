@@ -1,6 +1,7 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.lang.sql",
+    "lazyvim.plugins.extras.ai.codeium",
+    "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.util.rest"
   ],
   "install_version": 8,

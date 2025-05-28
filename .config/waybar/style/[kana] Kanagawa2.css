@@ -1,0 +1,206 @@
+/* fragile file path */
+@import url("../../.cache/hellwal/waybar-colors.css");
+
+/* @import url('../../.config/waybar/wallust/colors-waybar.css'); */
+
+/* Use hellwal colors  */
+@define-color bordercolor alpha(@color14, 1.0);
+@define-color bg alpha(@color8, 1.0);
+@define-color fg alpha(@foreground, 1.0);
+@define-color highlight alpha(@color15, 1.0);
+@define-color alert alpha(@color11, 1.0);
+@define-color disabled #A5A5A5;
+
+* {
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+}
+
+window#waybar {
+  color: @fg;
+  background-color: rgba(0,0,0,0.50);
+  border-radius: 2rem;
+}
+
+/*River Tags/Workspaces*/
+#tags {
+  background-color: @bg;
+  color: @bordercolor;
+  border: 0.1rem solid @bordercolor;
+  border-radius: 1rem;
+  padding: 0rem 1rem;
+}
+
+#window.focused {
+  color: @bordercolor;
+  background-color: @bg;
+  border-radius: 1rem;
+  border: 0.1rem solid @bordercolor;
+  padding: 0rem 1rem;
+}
+
+#tags button {
+  color: @bordercolor;
+  background: @bg;
+  padding: 0rem 0.4rem;
+  margin: 0rem 0.4rem;
+}
+
+#tags button.focused {
+  color: @fg;
+  border-radius: 30px 30px 30px 30px;
+  min-width: 30px;
+  transition: all 0.1s linear;
+}
+
+#taskbar button.hover,
+#tags button:hover {
+    color: @highlight;
+    background: @bg;
+    border-radius: 5px 5px 5px 5px;
+    opacity:0.7;
+}
+
+#tags button.urgent {
+  color: @alert;
+}
+#kanji button {
+  color: @bordercolor;
+  background: @bg;
+  padding: 0rem 0.4rem;
+  margin: 0rem 0.4rem;
+}
+
+#kanji button.occupied {
+  color: @fg;
+}
+
+#kanji button.focused {
+  color: @highlight;
+}
+
+#kanji button.urgent {
+  color: @alert;
+}
+
+#clock,
+#cava,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#kanji,
+#language,
+#backlight,
+#backlight-slider,
+#network,
+#pulseaudio,
+#pulseaudio-slider,
+#wireplumber,
+#custom-media,
+#taskbar,
+#tray,
+#tray menu,
+#tray > .needs-attention,
+#tray > .passive,
+#tray > .active,
+#mode,
+#scratchpad,
+#custom-notification,
+#custom-temp,
+#custom-wifi,
+#custom-kdeconnect,
+#custom-bluetooth,
+#custom-power,
+#custom-separator,
+#custom-group,
+#idle_inhibitor,
+#window,
+#mpd {
+  color: @fg;
+  background-color: @bg;
+  border-radius: 1rem;
+  border: 0.1rem solid @bordercolor;
+  padding: 0rem 0.8rem;
+  margin: 0rem 0.4rem;
+}
+
+#tray menu,
+#tray > .needs-attention,
+#tray > .passive,
+#tray > .active,
+#tray,
+#custom-notification,
+#custom-wifi,
+#custom-swaync,
+#custom-kdeconnect,
+#custom-bluetooth,
+#custom-power,
+#idle_inhibitor {
+  padding: 0rem 0.4rem;
+  margin: 0rem 0.4rem;
+  border: 0rem solid @bordercolor;
+}
+#custom-swaync {
+	margin-left: 12px;
+}
+
+#custom-group {
+  padding: 0.4rem 1rem;
+  margin-right: 0rem;
+}
+
+#custom-separator {
+  color: @disabled;
+}
+
+#network.disconnected,
+
+#pulseaudio.muted,
+#wireplumber.muted {
+  color: @alert;
+}
+
+#pulseaudio-slider,
+#pulseaudio {
+	color: @foreground;
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
+    background-color: #22252a;
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    min-height: 10px;
+    border-radius: 5px;
+    background-color: #ba5663;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @activegreen;
+}
+
+label:focus {
+  background-color: @bg;
+}
+kanji:focus {
+  background-color: @bg;
+}
