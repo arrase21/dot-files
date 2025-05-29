@@ -1,6 +1,6 @@
 /* fragile file path */
 @import url("../../.cache/hellwal/waybar-colors.css");
-
+/* @import '../../.config/waybar/wallust/colors-waybar.css'; */
 /* Use hellwal colors  */
 @define-color bordercolor alpha(@color14, 1.0);
 @define-color bg alpha(@color8, 1.0);

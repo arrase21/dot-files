@@ -18,12 +18,15 @@
   "margin-left": 8,
   "margin-right": 8,
 
-  "modules-left": [
-    "group/app_drawer",
-    "custom/separator#dot-line",
-    "custom/separator#blank",
-    "custom/weather"
-  ],
+"modules-left": [
+	"group/app_drawer",
+	"custom/separator#dot-line",
+	"group/mobo_drawer",
+	"custom/separator#blank",
+	"group/laptop",
+	"custom/separator#line",
+	"custom/weather",
+	],
 
   "modules-center": [
     "group/notify",
@@ -37,12 +40,16 @@
     "custom/hint"
   ],
 
-  "modules-right": [
-    "tray",
-    "group/audio",
-    "custom/separator#dot-line",
-    "group/status"
-  ],
+"modules-right": [
+	"network#speed",
+	"group/connections",
+	"custom/separator#line",
+	"tray",
+	"mpris", 
+	"group/audio",
+	"custom/separator#dot-line",
+	"group/status",
+	],
 
  "river/tags": {
   "hide-vacant": true,
