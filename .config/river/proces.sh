@@ -29,9 +29,7 @@ foot --server &
 
 riverctl spawn "wl-clipboard"
 # authentication agent (GUI sudo)
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river &
-systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river &
+rver/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 wl-paste --type text --watch cliphist store &
 wl-paste --type image --watch cliphist store &

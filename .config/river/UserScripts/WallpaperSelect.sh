@@ -90,5 +90,7 @@ main() {
 }
 
 main
-notify-send -i $choice_basename
+sleep 1
+notify-send 'Change image to '$choice_basename
+sleep 3
 "$SCRIPTSDIR/Refresh.sh"

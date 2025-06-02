@@ -171,19 +171,11 @@ riverctl map normal $mod+Shift I toggle-focused-tags $ticktick_tag
 riverctl map normal $mod Return spawn "$terminal"
 riverctl map normal $mod T spawn "$filemanager"
 riverctl map normal $mod W spawn "$browser"
-# riverctl map normal $mod R spawn "rofi -show drun"
-# riverctl map normal $mod O spawn "obsidian"
-# riverctl map normal $mod W spawn "ferdium"
-# riverctl map normal $mod D spawn "webcord"
-# riverctl map normal $mod D spawn "vesktop"
-# riverctl map normal $mod G spawn "retroarch"
+riverctl map normal $mod D spawn "telegram-desktop"
 # riverctl map normal $mod S spawn "spotify-launcher"
-# riverctl map normal $mod Y spawn "youtube-music"
-# riverctl map normal $mod A spawn "anki"
 # riverctl map normal $mod I spawn "ticktick"
 # riverctl map normal $mod E spawn "$terminal -e zsh -ic yazi"
 # riverctl map normal $mod M spawn "$terminal -e btop"
-# riverctl map normal $mod KP_Add spawn "galculator"
 
 riverctl map normal $mod Q close
 riverctl map normal $mod+Shift Q exit
@@ -194,7 +186,7 @@ riverctl map normal $mod S spawn "swaync-client -t -sw"
 riverctl map normal $mod+Alt R spawn "$HOME/.config/river/scripts/Refresh.sh >/dev/null && notify-send 'Refreshed River'"
 
 #Scripts
-riverctl map normal $mod C spawn "$HOME/scripts/colorpicker"
+riverctl map normal $mod+Shift C spawn "$HOME/scripts/colorpicker"
 riverctl map normal $mod Tab spawn "$HOME/scripts/wallchange.sh"
 riverctl map normal $mod Grave spawn "$HOME/scripts/list-river-window"
 riverctl map normal $mod Escape spawn "$HOME/scripts/rofi-power"
@@ -208,33 +200,34 @@ riverctl map normal $mod+Control R spawn "$scriptsDir/RofiThemeSelector.sh" # Ko
 riverctl map normal $mod R spawn "pkill rofi || true && rofi -show drun -modi drun,filebrowser,run,window"
 riverctl map normal $mod+Control SHIFT R spawn "pkill rofi || true && $scriptsDir/RofiThemeSelector-modified.sh"
 riverctl map normal $mod+ALT E spawn "$UserScripts/RofiEmoji.sh" # emoji menu
-# bind = $mainMod, R, exec, pkill -x rofi || $scriptsDir/rofilaunch.sh d # launch application launcher
-# bind = $mainMod Tab spawn "pkill -x rofi || $scrPath/rofilaunch.sh w" # launch window switcher
-# bind = $mainMod+Shift, E, exec, pkill -x rofi || $scrPath/rofilaunch.sh f # launch file explorer
 
 # Waybar / Bar related
 riverctl map normal $mod+CTRL ALT B spawn "pkill -SIGUSR1 waybar"      # Toggle hide/show waybar
 riverctl map normal $mod+Control B spawn "$scriptsDir/WaybarStyles.sh" # Waybar Styles Menu
 riverctl map normal $mod+Alt B spawn "$scriptsDir/WaybarLayout.sh"     # Waybar Layout Menu
+
 # FEATURES / EXTRAS (UserScripts)
-riverctl map normal $mod+Control M spawn "$UserScripts/RofiBeats.sh"      # online music using rofi
-riverctl map normal $mod G spawn "$UserScripts/WallpaperSelect.sh"        # Select wallpaper to apply
-riverctl map normal $mod+Shift W spawn "$UserScripts/WallpaperEffects.sh" # Wallpaper Effects by imagemagick
-# riverctl map normal $mod W spawn $UserScripts/WallpaperRandom.sh           # Random wallpapers
-riverctl map normal $mod+ALT C spawn "$UserScripts/RofiCalc.sh" # calculator (qalculate)
+riverctl map normal $mod+Control M spawn "$UserScripts/RofiBeats.sh"       # online music using rofi
+riverctl map normal $mod G spawn "$UserScripts/WallpaperSelect.sh"         # Select wallpaper to apply
+riverctl map normal $mod+Shift W spawn "$UserScripts/WallpaperEffects.sh"  # Wallpaper Effects by imagemagick
+riverctl map normal $mod+Control W spawn "$UserScripts/WallpaperRandom.sh" # Random wallpapers
+riverctl map normal $mod+ALT C spawn "$UserScripts/RofiCalc.sh"            # calculator (qalculate)
 
 # Screenshots
-riverctl map normal None Print spawn "$HOME/scripts/screenshots/captureAll.sh"
-riverctl map normal Control Print spawn "$HOME/scripts/screenshots/captureScreen.sh"
-riverctl map normal Control+Shift Print spawn "$HOME/scripts/screenshots/captureArea.sh"
 
-riverctl map normal $mod V spawn "cliphist list | rofi -dmenu -p 'Clipboard' -config $HOME/.config/rofi/regular.rasi | cliphist decode | wl-copy"
+riverctl map normal $mod P spawn "$scriptsDir/screenshots.sh s"       # partial screenshot capture
+riverctl map normal $mod+Ctrl P spawn "$scriptsDir/screenshots.sh sf" # partial screenshot capture (frozen screen)
+riverctl map normal $mod+Alt P spawm "$scriptsDir/screenshots.sh m"   # monitor screenshot capture
+riverctl map normal None Print spawn "$scriptsDir/screenshots.sh p"   # all monitors screenshot capture
+
+# riverctl map normal $mod V spawn "cliphist list | rofi -dmenu -p 'Clipboard' -config $HOME/.config/rofi/regular.rasi | cliphist decode | wl-copy"
+riverctl map normal $mod V spawn "$scriptsDir/ClipManager.sh"
 
 for i in $(seq 1 9); do
   # Tags are basically workspaces, but different
   tags=$((1 << ("$i" - 1)))
   riverctl map normal $mod "$i" set-focused-tags $(($sticky_tag + $tags))
-  riverctl map normal $mod+Shift "$i" set-view-tags $tags
+  riverctl map normal $mod+Alt "$i" set-view-tags $tags
   riverctl map normal $mod+Control "$i" toggle-focused-tags $tags
   riverctl map normal $mod+Shift+Control "$i" toggle-view-tags $tags
 done
@@ -250,9 +243,11 @@ for mode in normal locked; do
   riverctl map $mode None XF86AudioPrev spawn 'playerctl previous'
   riverctl map $mode None XF86AudioNext spawn 'playerctl next'
 
-  riverctl map $mode None XF86AudioRaiseVolume spawn "$HOME/scripts/volume up"
-  riverctl map $mode None XF86AudioLowerVolume spawn "$HOME/scripts/volume down"
-  riverctl map $mode None XF86AudioMute spawn "$HOME/scripts/volume mute"
+  riverctl map $mode None XF86AudioraiseVolume spawn "$scriptsDir/Volume.sh --inc"
+  riverctl map $mode None XF86AudiolowerVolume spawn "$scriptsDir/Volume.sh --dec "
+  riverctl map $mode None XF86AudioMicMute spawn "$scriptsDir/Volume.sh --togle-mic"
+  riverctl map $mode None XF86AudioMute spawn "$scriptsDir/Volume.sh --togle"
+  riverctl map $mode None XF86Rfkill spawn "$scriptsDir/AirplaneMode.sh"
 
   riverctl map $mode None XF86MonBrightnessUp spawn "$HOME/scripts/brightness up"
   riverctl map $mode None XF86MonBrightnessDown spawn "$HOME/scripts/brightness down"

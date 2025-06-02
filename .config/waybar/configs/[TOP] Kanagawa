@@ -39,7 +39,7 @@
 
   // Modules configuration
   "river/tags": {
-    // "num-tags": 10,
+    "num-tags": 10,
     "tag-labels": ["", "󰈹", "", "", "󰠮",  "", "", "", "󰠮"],
     "hide-vacant": true,
   },

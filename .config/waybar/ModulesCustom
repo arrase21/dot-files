@@ -16,6 +16,14 @@
 	//"exec-if": "ping wttr.in -c1",
 	"tooltip": true,
 },
+"custom/usb": {
+  "format": "{}",
+  "return-type": "json",
+  "exec": "$HOME/.config/waybar/monitorusb.sh",
+  "interval": 0,
+  "signal": 1,
+  },
+
 
 "custom/file_manager": {
 	"format": " ",
