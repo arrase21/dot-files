@@ -1,0 +1,38 @@
+palette = 0=#c9beff
+palette = 1=#c9c3dc
+palette = 2=#c9beff
+palette = 3=#c9beff
+palette = 4=#c9beff
+palette = 5=#e6e1e9
+palette = 6=#483f77
+palette = 7=#484459
+palette = 8=#c9c3dc
+palette = 9=#c9c3dc
+palette = 10=#141318
+palette = 11=#c9c3dc
+palette = 12=#e6e1e9
+palette = 13=#c9c3dc
+palette = 14=#483f77
+palette = 15=#c9beff
+
+background = #141318
+foreground = #e6e1e9
+cursor-color = #c9beff
+selection-background = #e6e1e9
+selection-foreground = #141318
+
+
+font-family = VictorMono Nerd Font
+font-size = 12
+
+### KeyBindings
+# Toggle commands
+
+# Split Management
+keybind = ctrl+v=new_split:right
+
+# Resize Split
+
+# Navigation
+
+# Miscellaneous

@@ -5,13 +5,13 @@
 /* note: Main themes in ~/.config/rofi/themes */
 /* You can manually change here or you can use rofi theme selector SUPER SHIFT E */
 
-//@theme "~/.config/rofi/themes/style_KooL10v2.rasi"
-//@theme "~/.config/rofi/themes/style_KooL10.rasi"
-//@theme "~/.config/rofi/themes/style_13.rasi"
-//@theme "~/.config/rofi/themes/style_13.rasi"
+//@theme "~/.config/rofi/themes/style_8.rasi"
 //@theme "~/.config/rofi/themes/style_Kool.rasi"
-//@theme "~/.config/rofi/themes/style_13.rasi"
-//@theme "~/.config/rofi/themes/style_13.rasi"
 //@theme "~/.config/rofi/themes/style_KooL10.rasi"
-//@theme "~/.config/rofi/themes/style_KooL11dark.rasi"
-@theme "~/.config/rofi/themes/style_13.rasi"
+//@theme "~/.config/rofi/themes/style_Kool.rasi"
+//@theme "~/.config/rofi/themes/style_Kool4.rasi"
+//@theme "~/.config/rofi/themes/style_Kool5.rasi"
+//@theme "~/.config/rofi/themes/style_Kool8.rasi"
+//@theme "~/.config/rofi/themes/style_13alt.rasi"
+//@theme "~/.config/rofi/themes/style_Kool8.rasi"
+@theme "~/.config/rofi/themes/style_13alt.rasi"

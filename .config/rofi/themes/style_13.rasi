@@ -15,6 +15,7 @@ configuration {
 
 // @import "fonts.rasi"
 @import "~/.config/rofi/wallust/colors-rofi.rasi"
+// @import "~/.config/rofi/colors.rasi"
 /*****----- Global Properties -----*****/
 * {
     background-color : @color1;
