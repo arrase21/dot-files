@@ -85,12 +85,12 @@ main() {
   # Aplicar la imagen seleccionada
   cp "$selected_file" ~/.config/wall.png &&
     swww img "$selected_file" $SWWW_PARAMS &&
-    wallust run "$selected_file" -s &
-  # hellwal -i "$selected_file" --neon-mode &
+    # wallust run "$selected_file" -s &
+    hellwal -i "$selected_file" --neon-mode &
 }
 
 main
 sleep 1
 notify-send 'Change image to '$choice_basename
-sleep 3
+sleep 2
 "$SCRIPTSDIR/Refresh.sh"

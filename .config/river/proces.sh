@@ -25,7 +25,7 @@ pkill polkit-gnome-au
 # fcitx5 -D &
 # network indicator
 nm-applet --indicator &
-foot --server &
+# foot --server &
 
 riverctl spawn "wl-clipboard"
 # authentication agent (GUI sudo)

@@ -20,6 +20,8 @@ fi
 
 # Load environment variables
 source "$HOME/.config/river/environment.sh"
+
+riverctl spawn "foot --server"
 # Load hellwal colors to apply to borders
 # source "$HOME/.cache/hellwal/variables.sh"
 wlr-randr --output HDMI-A-1 --mode 1356x768 --transform normal --pos 1366,768
@@ -137,10 +139,10 @@ scratchpad="$HOME/.config/river/scratchpads.sh"
 
 riverctl map normal $mod+Shift T spawn "$scratchpad term"
 riverctl map normal $mod+Shift M spawn "$scratchpad btop"
-riverctl map normal $mod+Shift E spawn "$scratchpad files"
+# riverctl map normal $mod+Shift E spawn "$scratchpad files"
 riverctl map normal $mod+Shift N spawn "$scratchpad nvim"
 riverctl map normal $mod+Shift P spawn "$scratchpad project"
-
+riverctl map normal $mod+Alt E spawn "$terminal -e zsh -ic yazi"
 # Mapping for sending to stickypad
 # Show sticky windows on scratch_tags too
 riverctl map normal $mod Slash toggle-view-tags $(($sticky_tag | $scratch_tags))
@@ -199,7 +201,8 @@ riverctl map normal $mod Escape spawn "$HOME/scripts/rofi-power"
 riverctl map normal $mod+Control R spawn "$scriptsDir/RofiThemeSelector.sh" # KooL Rofi Menu Theme Selector
 riverctl map normal $mod R spawn "pkill rofi || true && rofi -show drun -modi drun,filebrowser,run,window"
 riverctl map normal $mod+Control SHIFT R spawn "pkill rofi || true && $scriptsDir/RofiThemeSelector-modified.sh"
-riverctl map normal $mod+ALT E spawn "$UserScripts/RofiEmoji.sh" # emoji menu
+# riverctl map normal $mod+ALT E spawn "$UserScripts/RofiEmoji.sh" # emoji menu
+riverctl map normal $mod E spawn "$scriptsDir/RofiEmoji.sh" # emoji menu
 
 # Waybar / Bar related
 riverctl map normal $mod+CTRL ALT B spawn "pkill -SIGUSR1 waybar"      # Toggle hide/show waybar
@@ -384,7 +387,14 @@ riverctl rule-add -app-id "special-nvim" tags $dots_tag
 riverctl rule-add -app-id "special-btop" tags $monitor_tag
 riverctl rule-add -app-id "special-project" tags $project_tag
 riverctl rule-add -app-id "ticktick" tags $ticktick_tag
-riverctl rule-add -app-id "mpv" tags $docs_tag
+
+riverctl rule-add -app-id "engrampa" float
+riverctl rule-add -app-id "engrampa" dimensions 500x300
+
+riverctl rule-add -app-id "mpv" float
+riverctl rule-add -app-id "mpv" dimensions 1000 500
+riverctl rule-add -app-id "mpv" position 100 100
+
 riverctl rule-add -app-id "org.pwmt.zathura" tags $docs_tag
 riverctl rule-add -app-id "Spotify" tags $spotify_tag
 riverctl rule-add -title "YouTube Music" tags $spotify_tag
@@ -394,7 +404,6 @@ riverctl rule-add -app-id "anki" csd
 
 riverctl rule-add -title "Brawlhalla" fullscreen
 riverctl rule-add -app-id "org.pwmt.zathura" fullscreen
-riverctl rule-add -app-id "mpv" fullscreen
 riverctl rule-add -app-id "Spotify" fullscreen
 riverctl rule-add -app-id "ticktick" fullscreen
 riverctl rule-add -app-id "feh" fullscreen

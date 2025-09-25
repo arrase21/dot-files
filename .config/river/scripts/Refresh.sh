@@ -1,7 +1,4 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# Scripts for refreshing ags, waybar, rofi, swaync, wallust
-
 # Define file_exists function
 file_exists() {
   if [ -e "$1" ]; then
