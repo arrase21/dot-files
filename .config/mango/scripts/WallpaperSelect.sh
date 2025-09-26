@@ -3,8 +3,10 @@
 # Directorio de wallpapers
 wallDIR="$HOME/Pictures/wallpapers"
 iDIR="$HOME/.config/swaync/images" # Para notificaciones
-rofi_theme="$HOME/.config/rofi/config-wallpaper.rasi"
-SCRIPTSDIR="$HOME/.config/river/scripts"
+# rofi_theme="$HOME/.config/rofi/config-wallpaper.rasi"
+rofi_theme="$HOME/.config/mango/rofi/config-wallpaper.rasi"
+# SCRIPTSDIR="$HOME/.config/river/scripts"
+SCRIPTSDIR="$HOME/.config/mango/scripts"
 # Configuración de transiciones de swww
 FPS=60
 TYPE="any"

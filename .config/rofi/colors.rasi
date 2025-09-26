@@ -1,5 +1,6 @@
 
-@import "~/.cache/hellwal/rofi.rasi"
+// @import "~/.cache/hellwal/rofi.rasi"
+// @import "~/.config/wallust/templates/colors-rofi.rasi"
 window{
     background-color:            @color1;
     border-color:                @color10;

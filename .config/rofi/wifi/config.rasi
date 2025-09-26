@@ -1,4 +1,4 @@
 @theme "./themes/rosepine.rasi"
 	configuration {
-	terminal: "foo";
+	terminal: "kitty";
 	}

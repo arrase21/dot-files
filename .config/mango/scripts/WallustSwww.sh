@@ -12,7 +12,7 @@ monitor_outputs=($(ls "$cache_dir"))
 ln_success=false
 
 # Get current focused monitor
-current_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
+current_monitor=$(xrandr monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
 echo $current_monitor
 # Construct the full path to the cache file
 cache_file="$cache_dir$current_monitor"
@@ -30,10 +30,7 @@ if [ -f "$cache_file" ]; then
   cp -r "$wallpaper_path" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 fi
 
-# Check the flag before executing further commands
 if [ "$ln_success" = true ]; then
-  # execute wallust
   echo 'about to execute wallust'
-  # execute wallust skipping tty and terminal changes
   wallust run "$wallpaper_path" -s &
 fi

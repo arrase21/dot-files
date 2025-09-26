@@ -14,7 +14,7 @@ configuration {
 	window-format:              "{w} · {c} · {t}";
 }
 
-// @import "~/.cache/hellwal/rofi.rasi"
+// @import "~/.config/wallust/rofi.rasi"
 @theme "~/.config/rofi/colors.rasi"
 /*****----- Global Properties -----*****/
 * {

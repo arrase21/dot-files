@@ -13,7 +13,8 @@ swaync &
 
 # wallpaper
 # swaybg -i ~/.config/mango/wallpaper/czd.png >/dev/null 2>&1 &
-swaybg -i ~/Pictures/wallpapers/Gengar-Cemetery.jpg >/dev/null 2>&1 &
+# swaybg -i ~/Pictures/wallpapers/Gengar-Cemetery.jpg >/dev/null 2>&1 &
+swaybg -i ~/Pictures/wallpapers/mythical-dragon-beast-anime-style.jpg >/dev/null 2>&1 &
 # swaybg -i ~/.config/mango/wallpaper/czd.png >/dev/null 2>&1 &
 # swww-daemon &
 # top bar

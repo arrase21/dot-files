@@ -1,25 +1,59 @@
-return {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
-  ---@type snacks.Config
-  opts = {
-    -- terminal = {
-    --   win = {
-    --     colorize = true,
-    --     style = "terminal",
-    --     position = "float",
-    --     width = math.floor(vim.o.columns * 0.5),
-    --     height = math.floor(vim.o.lines * 0.5),
-    --     spell = false,
-    --     wrap = false,
-    --     statuscolum = " ",
-    --     conceallevel = 3,
-    --   },
-    -- },
-    bigfile = { enabled = true },
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local now_if_args = vim.fn.argc(-1) > 0 and now or later
+
+-- Fake lazy.stats para snacks.nvim
+package.preload["lazy.stats"] = function()
+  return {
+    stats = function()
+      return {
+        startuptime = 0,
+        count = 0,
+        loaded = 0,
+      }
+    end,
+  }
+end
+
+now(function()
+  add("folke/snacks.nvim")
+
+  require("snacks").setup({
+    indent = {
+      priority = 1,
+      enabled = true,
+      char = "│",
+      only_scope = false,
+      only_current = false,
+      hl = "SnacksIndent",
+    },
+    animate = {
+      enabled = vim.fn.has("nvim-0.10") == 1,
+      style = "out",
+      easing = "linear",
+      duration = { step = 20, total = 500 },
+    },
+    scope = {
+      enabled = true,
+      priority = 200,
+      char = "│",
+      underline = false,
+      only_current = false,
+      hl = "SnacksIndentScope",
+    },
+    chunk = {
+      enabled = false,
+      only_current = false,
+      priority = 200,
+      hl = "SnacksIndentChunk",
+      char = {
+        corner_top = "┌",
+        corner_bottom = "└",
+        horizontal = "─",
+        vertical = "│",
+        arrow = ">",
+      },
+    },
     dashboard = {
-      example = "compact_files",
       preset = {
         header = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
@@ -27,50 +61,15 @@ return {
 ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+]],
+      },
+      sections = {
+        { section = "header" },
+        { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+        { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+        { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
       },
     },
-
-    explorer = { enabled = true },
-    indent = { enabled = true },
-    input = { enabled = true },
-    notifier = { enabled = true },
-    picker = { enabled = true },
-    quickfile = { enabled = true },
-    scope = { enabled = true },
-    scroll = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
-    win = { enabled = true },
-  },
-  init = function()
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "VeryLazy",
-      callback = function()
-        -- Setup some globals for debugging (lazy-loaded)
-        _G.dd = function(...)
-          Snacks.debug.inspect(...)
-        end
-        _G.bt = function()
-          Snacks.debug.backtrace()
-        end
-        vim.print = _G.dd -- Override print to use snacks for `:=` command
-
-        -- Create some toggle mappings
-        Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-        Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-        Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-        Snacks.toggle.diagnostics():map("<leader>ud")
-        Snacks.toggle.line_number():map("<leader>ul")
-        Snacks.toggle
-          .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-          :map("<leader>uc")
-        Snacks.toggle.treesitter():map("<leader>uT")
-        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-        Snacks.toggle.inlay_hints():map("<leader>uh")
-        Snacks.toggle.indent():map("<leader>ug")
-        Snacks.toggle.dim():map("<leader>uD")
-      end,
-    })
-  end,
-}
+  })
+end)

@@ -1,5 +1,6 @@
-require("config.lazy")
--- vim.cmd("colorscheme tokyonight")
-vim.cmd("colorscheme kanagawa")
--- vim.cmd("colorscheme kanagawa-wave")
--- vim.cmd("colorscheme kanagawa-dragon")
+require("config.init")
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("lsp.diagnostics")
+
